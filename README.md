@@ -1,44 +1,40 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+이 프로젝트는 [Create React App](https://github.com/facebook/create-react-app)을 통해서 구축되었습니다.
 
-## Available Scripts
+# 프로그라피 6기 - 포맨
 
-In the project directory, you can run:
+## 개발은 같이 하자(개같하) 프로젝트
 
-### `yarn start`
+> 프로그라피 6기 포맨팀의 프론트엔드 프로젝트 리포지토리 입니다.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+본 프로젝트는 2개의 리포지토리를 가지고 있습니다.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- [프론트엔드 리포지토리](https://github.com/prography/gaegata-frontend.git)
+- [백엔드 리포지토리](https://github.com/prography/5th-4man-back)
 
-### `yarn test`
+## 실행
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```shell
+git clone https://github.com/prography/gaegata-frontend.git
+cd gaegata-frontend
+yarn
+yarn start
+```
 
-### `yarn build`
+## 코딩스타일
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+에어비엔비의 스타일가이드와 Prettier를 사용합니다. **꼭!** ESlint와 Prettier 설정을 해주세요.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- [ESLint & Prettier 설정방법](https://velog.io/@velopert/eslint-and-prettier-in-react)
+- [에어비엔비 스타일가이드](https://github.com/airbnb/javascript)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 풀리퀘스트(PR) 가이드
 
-### `yarn eject`
+> 자기가 무슨 작업을 했는지 참고할만한 내용을 자세히 적어주세요.
+> 또한 이전 코드와 비교하면서 오타나 필요 없는 코드가 있는지 꼼꼼히 확인해주세요.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+##### 체크리스트 ✅
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- 푸쉬 전에는 항상 **ESlint** 체크하기
+- **console.log**는 항상 제거
+- 내가 보기 어려운 코드는 남도 어려움. **주석 꼼꼼히 달기**
+- 문제를 해결했으면 **해결 방안과 원인**도 같이 적어주기
