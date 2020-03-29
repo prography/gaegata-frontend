@@ -19,5 +19,6 @@ function createRequestTypes(base: string): createRequestTypes {
 // Auth
 export const POST_LOGIN = createRequestTypes('POST_LOGIN');
 export const POST_AUTH_STATUS = createRequestTypes('POST_AUTH_STATUS');
+export const POST_REGISTER = createRequestTypes('POST_REGISTER');
 export const POST_LOGOUT = 'POST_LOGOUT';
 export const SET_LOGGED_INFO = 'SET_LOGGED_INFO';

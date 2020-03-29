@@ -1,12 +1,14 @@
-import { all, fork, call, take, put } from 'redux-saga/effects';
+import { all, fork, call, take, put, takeLatest } from 'redux-saga/effects';
 import authApi from 'lib/api/auth';
 import {
   AuthAction,
   authStatusActions,
   Login,
   loginActions,
+  Register,
   SetLoggedInfo,
   setLoggedAction,
+  registerActions,
 } from 'actions/auth';
 import authUtil from 'utils/storage';
 import * as types from 'constants/ActionTypes';
@@ -55,8 +57,25 @@ function* getMyUserDetail(token: string) {
   }
 }
 
+function* fetchRegister(action: Register) {
+  try {
+    yield call(authApi.postRigster, action.payload);
+    yield put<AuthAction>(registerActions.registerSuccess());
+  } catch (error) {
+    yield put<AuthAction>(registerActions.registerFailure());
+  }
+}
+
+function* watchFetchRegister() {
+  yield takeLatest(types.POST_REGISTER[types.REQUEST], fetchRegister);
+}
+
 export default function* root() {
-  yield all([fork(watchFetchLogin), fork(watchFetchAuthStatus)]);
+  yield all([
+    fork(watchFetchLogin),
+    fork(watchFetchAuthStatus),
+    fork(watchFetchRegister),
+  ]);
 
   //새로고침시 로컬스터리지 확인
   const token = authUtil.get('USER-KEY');

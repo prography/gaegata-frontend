@@ -21,10 +21,10 @@ const HeaderContainer: React.FC = () => {
     setVisible(true);
   };
 
-  const handleCancel = (): boolean => {
+  const handleCancel = useCallback((): boolean => {
     setVisible(false);
     return visible;
-  };
+  }, [visible]);
 
   return (
     <Header

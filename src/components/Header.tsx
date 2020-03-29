@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import { Modal } from 'antd';
 import LoginForm from 'components/LoginForm';
 import 'antd/dist/antd.css';
@@ -11,18 +11,19 @@ interface Props {
   handleVisible: () => void;
   handleLogout: () => void;
 }
-const Header: React.SFC<Props> = ({
+const Header: React.FC<RouteComponentProps & Props> = ({
   visible,
   isLoggedIn,
   handleCancel,
   handleVisible,
   handleLogout,
+  location,
 }) => {
   return (
     <>
       {visible && (
         <Modal
-          style={{ pointerEvents: 'all' }}
+          className="main-logo"
           title="개같하"
           visible={visible}
           footer={null}
@@ -31,7 +32,7 @@ const Header: React.SFC<Props> = ({
           <LoginForm onCancel={handleCancel} />
         </Modal>
       )}
-      <header>
+      <header className={location.pathname !== '/' ? 'scrolled' : ''}>
         <div className="container display-flex justify-content-space-between">
           <Link to="/" className="logo">
             개같하
@@ -57,7 +58,7 @@ const Header: React.SFC<Props> = ({
                     </Link>
                   </li>
                   <li>
-                    <Link to="#">회원가입</Link>
+                    <Link to="/register">회원가입</Link>
                   </li>
                 </>
               )}
@@ -69,4 +70,4 @@ const Header: React.SFC<Props> = ({
   );
 };
 
-export default Header;
+export default withRouter(Header);

@@ -4,10 +4,11 @@ import {
   POST_LOGIN,
   POST_LOGOUT,
   POST_AUTH_STATUS,
+  SET_LOGGED_INFO,
+  POST_REGISTER,
   REQUEST,
   SUCCESS,
   FAILURE,
-  SET_LOGGED_INFO,
 } from 'constants/ActionTypes';
 
 export interface IAuthUser {
@@ -18,6 +19,9 @@ export interface IAuthUser {
     user_id: number;
     username: string;
     nickname: string;
+    introduction: string;
+    image: string;
+    is_github_authenticated: string;
   };
 }
 export interface IAuthLogin {
@@ -39,6 +43,9 @@ const initialState: IAuthState = {
       user_id: -1,
       username: '',
       nickname: '',
+      introduction: '',
+      image: '',
+      is_github_authenticated: '',
     },
   },
   login: {
@@ -97,6 +104,14 @@ const authReducer = (state = initialState, action: AuthAction): IAuthState => {
         draft.user.isLoggedIn = true;
         return draft;
       }
+      case POST_REGISTER[REQUEST]:
+        return draft;
+
+      case POST_REGISTER[SUCCESS]:
+        return draft;
+
+      case POST_REGISTER[FAILURE]:
+        return draft;
     }
   });
 };

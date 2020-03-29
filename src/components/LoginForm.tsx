@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { LogoutOutlined, GithubOutlined } from '@ant-design/icons';
 import { IRootState } from 'reducers/index';
 import swal from 'sweetalert';
+import { ILoginUser } from 'models/user';
 
 export interface Props {
   onCancel: () => void;
@@ -25,12 +26,11 @@ const Login: React.SFC<Props> = ({ onCancel }) => {
   };
 
   const clickLogin = async () => {
-    await dispatch(
-      loginActions.loginRequest({
-        username,
-        password,
-      }),
-    );
+    const params: ILoginUser = {
+      username,
+      password,
+    };
+    await dispatch(loginActions.loginRequest(params));
   };
 
   useEffect(() => {

@@ -14,5 +14,5 @@ export function createAction<T extends string, P>(
 ): ActionWithPayload<T, P>;
 
 export function createAction<T extends string, P>(type: T, payload?: P) {
-  return payload == undefined ? { type } : { type, payload };
+  return payload === undefined ? { type } : { type, payload };
 }

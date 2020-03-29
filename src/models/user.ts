@@ -1,8 +1,11 @@
 export interface IUser {
-  user_id: string;
+  user_id?: string;
   username: string;
-  nickname: string;
-  is_new: boolean;
+  password: string;
+  email: string;
+  introduction?: string;
+  nickname?: string;
+  is_new?: boolean;
 }
 
 export interface ILoginUser {
