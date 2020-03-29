@@ -97,22 +97,6 @@ const authReducer = (state = initialState, action: AuthAction): IAuthState => {
         draft.user.isLoggedIn = true;
         return draft;
       }
-      // 로그아웃 구현
-      // case LOGOUT[REQUEST]: {
-
-      //   return draft;
-      // }
-      // case LOGOUT[SUCCESS]: {
-      //   draft.login.authStatus = 'INIT';
-      //   draft.user.isLoggedIn = false;
-      //   draft.user.userInfo = initialState.user.userInfo;
-
-      //   return draft;
-      // }
-      // case LOGOUT[FAILURE]: {
-
-      //   return draft;
-      // }
     }
   });
 };

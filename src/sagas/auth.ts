@@ -14,7 +14,7 @@ import * as types from 'constants/ActionTypes';
 export function* fetchLogin(action: Login) {
   try {
     const { data } = yield call(authApi.postLogin, action.payload);
-    authUtil.set('access', data.access);
+    authUtil.set('USER-KEY', data.access);
     yield put<AuthAction>(loginActions.loginSuccess(data));
   } catch (error) {
     yield put<AuthAction>(loginActions.loginFailure());
@@ -46,23 +46,6 @@ function* watchFetchAuthStatus() {
   }
 }
 
-// 로그아웃 구현
-// export function* fetchLogout(action: Logout) {
-//   try {
-//     yield call(authApi.postLogout);
-//     yield put<AuthAction>(logoutActions.logoutSuccess());
-//   } catch (error) {
-//     yield put<AuthAction>(logoutActions.logoutFailure());
-//   }
-// }
-
-// function* watchFetchLogout() {
-//   while (true) {
-//     const action: AuthAction = yield take(types.LOGOUT[types.REQUEST]);
-//     yield fork(fetchLogout, action);
-//   }
-// }
-
 function* getMyUserDetail(token: string) {
   try {
     const { data } = yield call(authApi.getAuthStatus, token);
@@ -76,7 +59,7 @@ export default function* root() {
   yield all([fork(watchFetchLogin), fork(watchFetchAuthStatus)]);
 
   //새로고침시 로컬스터리지 확인
-  const token = authUtil.get('access');
+  const token = authUtil.get('USER-KEY');
 
   if (token) {
     yield put<SetLoggedInfo>(setLoggedAction());

@@ -21,6 +21,3 @@ export const POST_LOGIN = createRequestTypes('POST_LOGIN');
 export const POST_AUTH_STATUS = createRequestTypes('POST_AUTH_STATUS');
 export const POST_LOGOUT = 'POST_LOGOUT';
 export const SET_LOGGED_INFO = 'SET_LOGGED_INFO';
-
-//로그아웃 구현
-//export const LOGOUT = createRequestTypes('LOGOUT');

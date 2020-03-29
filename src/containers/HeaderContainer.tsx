@@ -13,7 +13,7 @@ const HeaderContainer: React.FC = () => {
 
   const handleLogout = useCallback((): void => {
     dispatch(logout());
-    authUtil.remove('access');
+    authUtil.remove('USER-KEY');
     window.location.href = '/';
   }, [dispatch]);
 

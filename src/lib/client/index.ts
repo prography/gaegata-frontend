@@ -9,6 +9,8 @@ export interface Error {
   status: number;
 }
 
+const API_URL = 'https://api.gaegata.com';
+
 class Client {
   private axios: AxiosInstance;
   public isLoggedIn: () => boolean;
@@ -26,7 +28,7 @@ class Client {
       return {};
     };
     this.axios = axios.create({
-      baseURL: 'https://api.gaegata.com/',
+      baseURL: API_URL,
       headers: {
         'Content-Type': 'application/json',
         Authorization: this.authUserHeader(),
