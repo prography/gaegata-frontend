@@ -76,3 +76,23 @@
 .right-space {
   opacity: 0;
 }
+
+.ant-modal-title {
+  font-family: 'Nanum Myeongjo';
+  text-align: center;
+  width: 100%;
+  font-size: 1.05rem;
+  font-weight: bold;
+}
+
+.ant-modal-content {
+  border-radius: 10px;
+}
+
+.ant-modal-header {
+  border-radius: 10px;
+}
+
+.ant-btn-lg {
+  border-radius: 4px;
+}
