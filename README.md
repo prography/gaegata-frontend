@@ -1,6 +1,7 @@
 이 프로젝트는 [Create React App](https://github.com/facebook/create-react-app)을 통해서 구축되었습니다.
 
-# 프로그라피 6기 - 포맨
+# 프로그라피 6기 - 개같하
+
 
 ## 개발은 같이 하자(개같하) 프로젝트
 

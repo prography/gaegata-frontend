@@ -1,0 +1,56 @@
+@import 'reset.scss';
+
+// section
+.home-wrap {
+  .home-list-wrap {
+    padding: 70px 0 0;
+    background-color: #f9f9f9;
+
+    .list-section {
+      border-bottom: 1px solid #efefef;
+      padding: 70px 0 20px;
+
+      .content-title-aria {
+        .section-title {
+          padding-bottom: 5px;
+
+          h2 {
+            color: $text-color;
+            font-size: 2rem;
+            margin-bottom: 0;
+          }
+
+          p {
+            font-size: 1rem;
+            color: #adb5bd;
+          }
+        }
+      }
+
+      .more-loading-team {
+        padding: 40px 0;
+        color: $main-color-blue;
+
+        button {
+          background: none;
+          font-size: 1rem;
+        }
+
+        .loading-icon {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
+
+#register-content {
+  padding: 60px 0;
+}
+
+// components
+@import './components/_Header.scss';
+@import './components/Footer.scss';
+@import './components/_Banner.scss';
+@import './components/_LoginForm';
+@import './components/Register';
