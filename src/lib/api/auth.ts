@@ -1,11 +1,12 @@
 import client from 'lib/client';
-import { ILoginUser, IUser } from 'models/user';
+import { IAuthLogin,IRegisterUser } from 'models/user';
 
-const postLogin = async (payload: ILoginUser) => {
+const postLogin = async (payload: IAuthLogin) => {
   return await client.post('/account/token/', payload);
 };
 
 const getAuthStatus = async (payload: string) => {
+  console.log(payload);
   return await client.get('/account/self/', payload);
 };
 
@@ -13,7 +14,7 @@ const idCheck = async (payload: { username: string }) => {
   return client.post('/account/check/duplication/', payload);
 };
 
-const postRigster = async (payload: IUser) => {
+const postRigster = async (payload: IRegisterUser) => {
   return client.post('/account/', payload);
 };
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import { Modal } from 'antd';
-import LoginForm from 'components/LoginForm';
 import 'antd/dist/antd.css';
 
 interface Props {
@@ -29,7 +28,6 @@ const Header: React.FC<RouteComponentProps & Props> = ({
           footer={null}
           onCancel={handleCancel}
         >
-          <LoginForm onCancel={handleCancel} />
         </Modal>
       )}
       <header className={location.pathname !== '/' ? 'scrolled' : ''}>
