@@ -4,7 +4,9 @@ import App from 'Root';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import configureStore from 'store/configureStore';
-import 'styles/main.scss';
+
+import 'antd/dist/antd.css';
+import 'styles/reset.css';
 
 const store = configureStore();
 
