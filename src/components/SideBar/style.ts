@@ -45,6 +45,7 @@ export const NavMenu = styled.ul`
 `;
 
 export const NavUserWrap = styled.ul`
+  cursor: pointer;
   padding: 10px;
 `;
 

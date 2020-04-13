@@ -6,3 +6,27 @@ a {
 li {
   list-style: none;
 }
+
+.modal-border .ant-modal-content {
+  border-radius: 10px;
+}
+
+.modal-border .ant-modal-header {
+  border-radius: 10px;
+}
+
+input::-webkit-input-placeholder {
+  color: #a9a9a9;
+}
+input:-ms-input-placeholder {
+  color: #a9a9a9;
+}
+textarea::-webkit-input-placeholder {
+  color: #a9a9a9;
+}
+textarea:-ms-input-placeholder {
+  color: #a9a9a9;
+}
+button:focus {
+  outline: none;
+}

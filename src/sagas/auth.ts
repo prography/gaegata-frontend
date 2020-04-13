@@ -9,6 +9,7 @@ import {
   SetLoggedInfo,
   setLoggedAction,
   registerActions,
+  emailCheckActions,
 } from 'actions/auth';
 import authUtil from 'utils/storage';
 import * as types from 'constants/ActionTypes';
@@ -51,6 +52,7 @@ function* watchFetchAuthStatus() {
 function* getMyUserDetail(token: string) {
   try {
     const { data } = yield call(authApi.getAuthStatus, token);
+
     yield put<AuthAction>(authStatusActions.authStatusSuccess(data));
   } catch (error) {
     yield put<AuthAction>(authStatusActions.authStatusFailure());
@@ -70,11 +72,29 @@ function* watchFetchRegister() {
   yield takeLatest(types.POST_REGISTER[types.REQUEST], fetchRegister);
 }
 
+function* fetchEmailCheck(action: Login) {
+  try {
+    const { data } = yield call(authApi.idCheck, action.payload);
+    let check = 'FALSE';
+    if (data.username) {
+      check = 'TRUE';
+    }
+    yield put<AuthAction>(emailCheckActions.emailCheckSuccess(check));
+  } catch (error) {
+    yield put<AuthAction>(emailCheckActions.emailCheckFailure());
+  }
+}
+
+function* watchFetchEmailCheck() {
+  yield takeLatest(types.EMAIL_CHECK[types.REQUEST], fetchEmailCheck);
+}
+
 export default function* root() {
   yield all([
     fork(watchFetchLogin),
     fork(watchFetchAuthStatus),
     fork(watchFetchRegister),
+    fork(watchFetchEmailCheck),
   ]);
 
   //새로고침시 로컬스터리지 확인
