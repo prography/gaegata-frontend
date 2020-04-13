@@ -15,7 +15,7 @@ import {
   NavUserName,
   NavUserLogin,
 } from './style';
-import 'styles/sideBar.css';
+import 'styles/SideBar.css';
 import 'antd/dist/antd.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { IRootState } from 'reducers/index';
