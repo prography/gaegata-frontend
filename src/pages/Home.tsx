@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import PageLayout from './PageLayout';
 import { Row, Col } from 'antd';
 import PostCard from 'components/PostCard';
