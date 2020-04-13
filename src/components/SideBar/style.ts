@@ -5,9 +5,10 @@ export const NavLayout = styled.div`
   left: 0;
   top: 0;
   padding: 10px;
-  width: 180px;
-  height: 98%;
+  width: 300px;
+  height: 100vh;
   background-color: #f7f8fb;
+  border-right : 1px solid #efefef;
 `;
 
 export const NavLogo = styled.div`
