@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import ModalComponent from 'components/Modal/index';
 import Login from 'components/Login/index';
@@ -52,7 +52,7 @@ const SideBar = () => {
             <NavSecondMenuWarp>
               메뉴
               <NavMenu>
-                <li>팀 생성하기</li>
+                <Link to="/createteam">팀생성하기</Link>
                 <li>북마크</li>
               </NavMenu>
             </NavSecondMenuWarp>

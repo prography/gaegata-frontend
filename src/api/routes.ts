@@ -1,5 +1,5 @@
 import Home from 'pages/Home';
-import Register from 'pages/Register';
+import CreateTeam from 'pages/CreateTeam/index';
 
 export const routes = [
   {
@@ -8,8 +8,8 @@ export const routes = [
     exact: true,
   },
   {
-    path: '/register',
-    page: Register,
+    path: '/createteam',
+    page: CreateTeam,
     exact: true,
   },
 ];

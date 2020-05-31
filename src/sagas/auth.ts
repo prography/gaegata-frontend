@@ -1,5 +1,4 @@
-import { all, fork, call, take, put, takeLatest } from 'redux-saga/effects';
-import * as authApi from '../api/auth';
+import { all, fork, call, take } from 'redux-saga/effects';
 import { fetchEntity } from 'utils/saga';
 import {
   registerEntity,
