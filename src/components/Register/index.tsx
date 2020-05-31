@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
-import {
-  RegisterWrap,
-} from './style';
-import {LoginInput, LoginButton, LoginInputWarp} from '../common/style';
-import { IRegisterUser } from 'models/user';
-import { IRootState } from 'reducers/index';
-import { registerActions } from 'actions/auth';
+import React, { useState, useEffect } from 'react';
+import { RegisterWrap } from './style';
+import { LoginInput, LoginButton, LoginInputWarp } from '../common/style';
+import { RegisterParams } from 'api/auth';
 import { useSelector, useDispatch } from 'react-redux';
+import { register } from 'store/auth/action';
 
 const Register = () => {
-  const [nickname, setNickname] = useState('');
-  const [nicknameError, setNicknameError] = useState('');
+  const [username, setUsername] = useState('');
+  const [usernameError, setUsernameError] = useState('');
 
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
@@ -19,11 +16,12 @@ const Register = () => {
   const [passwordRepeatError, setPasswordRepeatError] = useState('');
 
   const dispatch = useDispatch();
-  const { username } = useSelector((state: IRootState) => state.auth.login);
+  const { email } = useSelector((state: StoreState) => state.auth.emailCheck);
+  const { status } = useSelector((state: StoreState) => state.auth.register);
 
   const onChangeNickname = (e: React.FormEvent<HTMLInputElement>): void => {
-    setNickname(e.currentTarget.value);
-    setNicknameError('');
+    setUsername(e.currentTarget.value);
+    setUsernameError('');
   };
 
   const onChangePassword = (e: React.FormEvent<HTMLInputElement>): void => {
@@ -40,7 +38,7 @@ const Register = () => {
 
   const nicknameViladation = () => {
     const nicknameRule = /^[a-zA-Z가-힣]{1}[a-zA-Z0-9가-힣]{1,9}$/i;
-    return nicknameRule.test(nickname);
+    return nicknameRule.test(username);
   };
 
   const passwordViladation = () => {
@@ -50,7 +48,7 @@ const Register = () => {
 
   const onsubmit = async () => {
     if (!nicknameViladation()) {
-      setNicknameError('이름은 특수문자 제외 한글자 이상이어야 합니다.');
+      setUsernameError('이름은 특수문자 제외 한글자 이상이어야 합니다.');
       return;
     }
 
@@ -66,14 +64,24 @@ const Register = () => {
       return;
     }
 
-    const params: IRegisterUser = {
+    const params: RegisterParams = {
+      email,
       username,
       password,
-      nickname,
     };
 
-    await dispatch(registerActions.registerRequest(params));
+    await dispatch(register(params));
   };
+
+  useEffect(() => {
+    if (status === 'SUCCESS') {
+      window.alert('회원가입 되었습니다.');
+      window.location.href = '/';
+    }
+    if (status === 'FAILURE') {
+      window.alert('회원가입이 되지 않았습니다.');
+    }
+  }, [status]);
 
   return (
     <RegisterWrap>
@@ -85,10 +93,10 @@ const Register = () => {
           id="nickname"
           placeholder="이름을 입력해주세요."
           onChange={onChangeNickname}
-          error={nicknameError}
+          error={usernameError}
         />
         <div style={{ textAlign: 'left', color: 'red', fontSize: '12px' }}>
-          {nicknameError}
+          {usernameError}
         </div>
       </LoginInputWarp>
       <LoginInputWarp>
@@ -120,7 +128,9 @@ const Register = () => {
         </div>
       </LoginInputWarp>
 
-      <LoginButton onClick={onsubmit} color="#fff" backgroundColor="#5f76f3">회원가입하기</LoginButton>
+      <LoginButton onClick={onsubmit} color="#fff" backgroundColor="#5f76f3">
+        회원가입하기
+      </LoginButton>
     </RegisterWrap>
   );
 };

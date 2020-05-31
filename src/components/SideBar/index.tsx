@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ModalComponent from 'components/Modal/index';
 import Login from 'components/Login/index';
@@ -18,27 +18,24 @@ import {
 import 'styles/SideBar.css';
 import 'antd/dist/antd.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { IRootState } from 'reducers/index';
-import { loginModalCancelAction } from 'actions/auth';
+import { reset } from 'store/auth/action';
 
 const SideBar = () => {
   const [visible, setVisible] = useState(false);
 
-  const { isLoggedIn, userInfo } = useSelector(
-    (state: IRootState) => state.auth.user,
+  const isLoggedIn = useSelector(
+    (state: StoreState) => state.auth.me.isLoggedIn,
   );
-  const { progressStatus } = useSelector(
-    (state: IRootState) => state.auth.login,
-  );
+  const { status } = useSelector((state: StoreState) => state.auth.emailCheck);
+  const { username, email } = useSelector((state: StoreState) => state.auth.me);
   const dispatch = useDispatch();
 
   const handleVisible = (): void => {
     setVisible(true);
   };
-
   const handleCancel = useCallback(async () => {
     setVisible(false);
-    await dispatch(loginModalCancelAction());
+    dispatch(reset());
 
     return visible;
   }, [visible]);
@@ -62,8 +59,8 @@ const SideBar = () => {
           </NavGlobalMenu>
           {isLoggedIn ? (
             <NavUserWrap>
-              <NavUserName>{userInfo.username}</NavUserName>
-              <NavUserLogin>{userInfo.is_github_authenticated}</NavUserLogin>
+              <NavUserName>{username}</NavUserName>
+              <NavUserLogin>{email}</NavUserLogin>
             </NavUserWrap>
           ) : (
             <NavUserWrap onClick={handleVisible}>
@@ -80,7 +77,7 @@ const SideBar = () => {
           width={400}
           title="개같하"
         >
-          {progressStatus == 'FALSE' ? (
+          {status == 'register' ? (
             <Register />
           ) : (
             <Login handleCancel={handleCancel} />

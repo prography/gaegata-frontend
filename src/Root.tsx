@@ -1,14 +1,27 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { routes } from 'lib/routes';
+import { routes } from 'api/routes';
 import SideBar from 'components/SideBar/index';
 import styled from 'styled-components';
+import { me } from 'store/auth/action';
+import { getAuthToken } from 'utils/auth';
 
 const PageWrap = styled.div`
-  padding-left:300px;
+  padding-left: 300px;
 `;
 
 const Root: React.FC = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const token = getAuthToken();
+
+    if (token) {
+      dispatch(me(token));
+    }
+  }, []);
+
   return (
     <Router>
       <Suspense fallback="loading...">

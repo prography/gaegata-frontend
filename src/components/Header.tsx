@@ -27,8 +27,7 @@ const Header: React.FC<RouteComponentProps & Props> = ({
           visible={visible}
           footer={null}
           onCancel={handleCancel}
-        >
-        </Modal>
+        ></Modal>
       )}
       <header className={location.pathname !== '/' ? 'scrolled' : ''}>
         <div className="container display-flex justify-content-space-between">
