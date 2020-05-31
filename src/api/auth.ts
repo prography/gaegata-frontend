@@ -1,6 +1,5 @@
 import fetcher from 'utils/fetcher';
 import { User } from 'models/user';
-import { setAuthToken } from 'utils/auth';
 
 export interface LoginParams {
   email: string;
