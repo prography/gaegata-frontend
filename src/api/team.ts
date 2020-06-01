@@ -23,11 +23,13 @@ export const createTeam = async (payload: TeamParams) => {
         'Content-Type': 'application/json',
       }
     : {};
-  console.log(token);
-
-  console.log(payload);
   const { data } = await fetcher.post('teams/board/', payload, {
     headers: headers,
   });
+  return data;
+};
+
+export const detailTeam = async (team_id: string) => {
+  const { data } = await fetcher.get(`teams/board/10/`);
   return data;
 };

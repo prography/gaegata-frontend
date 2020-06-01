@@ -52,7 +52,7 @@ const SideBar = () => {
             <NavSecondMenuWarp>
               메뉴
               <NavMenu>
-                <Link to="/createteam">팀생성하기</Link>
+                <Link to="/team/create">팀생성하기</Link>
                 <li>북마크</li>
               </NavMenu>
             </NavSecondMenuWarp>
