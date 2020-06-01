@@ -23,13 +23,20 @@ export const createTeam = async (payload: TeamParams) => {
         'Content-Type': 'application/json',
       }
     : {};
-  const { data } = await fetcher.post('teams/board/', payload, {
+  const { data } = await fetcher.post('/teams/board/', payload, {
     headers: headers,
   });
   return data;
 };
 
 export const detailTeam = async (team_id: string) => {
-  const { data } = await fetcher.get(`teams/board/10/`);
+  console.log(team_id);
+  const { data } = await fetcher.get(`/teams/board/${team_id}/`);
+  return data;
+};
+
+export const listTeam = async () => {
+  const { data } = await fetcher.get('/teams/board/');
+
   return data;
 };

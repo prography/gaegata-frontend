@@ -3,6 +3,7 @@ import * as authApi from '../../api/team';
 
 export const CREAT_TEAM = 'CREAT_TEAM';
 export const DETAIL_TEAM = 'DETAIL_TEAM';
+export const LIST_TEAM = 'LIST_TEAM';
 
 export const createTeamEntity = createEntity(CREAT_TEAM, authApi.createTeam);
 export const createTeam = (params: authApi.TeamParams) => ({
@@ -16,5 +17,12 @@ export const detailTeam = (params: string | {}) => ({
   params,
 });
 
+export const listTeamEntity = createEntity(LIST_TEAM, authApi.listTeam);
+export const listTeam = (params: string) => ({
+  type: LIST_TEAM,
+  params,
+});
+
 export type CreateTeam = ReturnType<typeof createTeam>;
 export type DetailTeam = ReturnType<typeof detailTeam>;
+export type ListTeam = ReturnType<typeof listTeam>;

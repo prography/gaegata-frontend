@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Comment: React.FC<string> = team_id => {
+const Comment: React.FC = () => {
   return <div>123123;</div>;
 };
 
