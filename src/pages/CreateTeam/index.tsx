@@ -16,6 +16,7 @@ import {
 } from './styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { createTeam } from 'store/team/action';
+import { useHistory } from 'react-router';
 
 const CreateTeam: React.FC = () => {
   const [teamContent, setTeamContent] = useState<TeamParams>({
@@ -27,8 +28,9 @@ const CreateTeam: React.FC = () => {
     region: '',
   });
 
+  const history = useHistory();
   const dispatch = useDispatch();
-  const { status } = useSelector((state: StoreState) => state.team.team);
+  const { status, id } = useSelector((state: StoreState) => state.team.team);
 
   const handleChange = (
     e:
@@ -43,11 +45,12 @@ const CreateTeam: React.FC = () => {
   };
 
   useEffect(() => {
-    if (status === 'SUCCESS') {
+    if (status === 'CREATE_SUCCESS') {
       window.alert('팀이 생성 되었습니다.');
-      window.location.href = '/';
+      console.log(id);
+      history.push(`/team/detail/${id}`);
     }
-    if (status === 'FAILTURE') {
+    if (status === 'CREATE_FAILTURE') {
       window.alert('팀이 생성 되지 않았습니다.');
     }
   }, [status]);
