@@ -43,7 +43,7 @@ const SideBar = () => {
   return (
     <>
       <NavLayout>
-        <NavLogo>개</NavLogo>
+        <NavLogo>Fitple</NavLogo>
         <NavContainer>
           <NavGlobalMenu>
             <NavFirstLevelWrap>

@@ -1,6 +1,5 @@
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Comment from 'components/Comment';
 import { detailTeam } from 'store/team/action';
 import {
   DetailTeamWrap,

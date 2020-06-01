@@ -1,6 +1,7 @@
 export interface Team {
   id: number;
   title: string;
+  author: string;
   description: string;
   planner: number;
   developer: number;
