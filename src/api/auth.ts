@@ -38,7 +38,7 @@ export const getUser = async (token?: string) => {
         'Content-Type': 'application/json',
       }
     : {};
-  const { data } = await fetcher.get<{ data: User }>('account/profile/', {
+  const { data } = await fetcher.get('account/profile/', {
     headers,
   });
 

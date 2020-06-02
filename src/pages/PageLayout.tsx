@@ -12,7 +12,7 @@ const PageTitle = styled.h1`
 const PageLayout: React.FC = ({ children }) => {
   return (
     <MainLayout>
-      <PageTitle>개같하</PageTitle>
+      <PageTitle>Fitple</PageTitle>
       {children}
     </MainLayout>
   );
