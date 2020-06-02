@@ -8,13 +8,18 @@ export const CreateTeamWrap = styled.div`
 `;
 
 export const Container = styled.div`
-  width: 70%;
+  width: 50%;
 `;
 
 export const Form = styled.form``;
 
 export const SubTitle = styled.label`
-  font-size: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+`;
+
+export const ItemWrap = styled.div`
+  margin-top: 3%;
 `;
 
 export const Title = styled.h1`
@@ -30,7 +35,6 @@ export const Hr = styled.hr`
 export const Input = styled.input`
   width: 100%;
   height: 30px;
-  margin: 10px 0;
   padding-right: 15px;
   padding-left: 15px;
   border-radius: 5px;
@@ -39,8 +43,12 @@ export const Input = styled.input`
   color: #333;
 `;
 
+export const NumberInputWrap = styled.div`
+  width: 80%;
+`;
+
 export const NumberInput = styled.input`
-  width: 20%;
+  width: 70%;
   height: 30px;
   padding-right: 15px;
   padding-left: 15px;
@@ -92,4 +100,6 @@ export const CreateButton = styled.button`
   cursor: pointer;
   display: block;
   margin-left: auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
 `;

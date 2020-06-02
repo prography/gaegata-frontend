@@ -13,6 +13,8 @@ import {
   SelectArea,
   CreateButton,
   Form,
+  ItemWrap,
+  NumberInputWrap,
 } from './styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { createTeam } from 'store/team/action';
@@ -80,58 +82,71 @@ const CreateTeam: React.FC = () => {
       <Hr></Hr>
       <Container>
         <Form onSubmit={handleSubmit}>
-          <SubTitle>프로젝트 명</SubTitle>
-          <Input
-            id="title"
-            type="text"
-            placeholder="프로젝트 명을 입력해주세요."
-            onChange={handleChange}
-          ></Input>
-          <SubTitle>모집분야</SubTitle>
-          <FieldWrap>
-            기획자{' '}
-            <NumberInput
-              id="planner"
-              type="number"
-              min="0"
-              max="10"
-              defaultValue="0"
+          <ItemWrap>
+            <SubTitle>프로젝트 명</SubTitle>
+            <Input
+              id="title"
+              type="text"
+              placeholder="프로젝트 명을 입력해주세요."
               onChange={handleChange}
-            ></NumberInput>{' '}
-            개발자{' '}
-            <NumberInput
-              id="developer"
-              type="number"
-              min="0"
-              max="10"
-              defaultValue="0"
+            ></Input>
+          </ItemWrap>
+          <ItemWrap>
+            <SubTitle>모집분야</SubTitle>
+            <FieldWrap>
+              <NumberInputWrap>
+                기획자{' '}
+                <NumberInput
+                  id="planner"
+                  type="number"
+                  min="0"
+                  max="10"
+                  defaultValue="0"
+                  onChange={handleChange}
+                ></NumberInput>{' '}
+              </NumberInputWrap>
+              <NumberInputWrap>
+                개발자{' '}
+                <NumberInput
+                  id="developer"
+                  type="number"
+                  min="0"
+                  max="10"
+                  defaultValue="0"
+                  onChange={handleChange}
+                ></NumberInput>{' '}
+              </NumberInputWrap>
+              <NumberInputWrap>
+                디자이너{' '}
+                <NumberInput
+                  id="designer"
+                  type="number"
+                  min="0"
+                  max="10"
+                  defaultValue="0"
+                  onChange={handleChange}
+                ></NumberInput>
+              </NumberInputWrap>
+            </FieldWrap>
+          </ItemWrap>
+          <ItemWrap>
+            <SubTitle>프로젝트 설명</SubTitle>
+            <TextArea
+              id="description"
+              placeholder="프로젝트에 대한 세부설명을 입력해주세요."
               onChange={handleChange}
-            ></NumberInput>{' '}
-            디자이너{' '}
-            <NumberInput
-              id="designer"
-              type="number"
-              min="0"
-              max="10"
-              defaultValue="0"
-              onChange={handleChange}
-            ></NumberInput>
-          </FieldWrap>
-          <SubTitle>프로젝트 설명</SubTitle>
-          <TextArea
-            id="description"
-            placeholder="프로젝트에 대한 세부설명을 입력해주세요."
-            onChange={handleChange}
-          ></TextArea>
-          <SubTitle>지역</SubTitle>
-          <SelectArea id="region" onChange={handleChange}>
-            <option value="0">서울특별시</option>
-            <option value="1">부산광역시</option>
-            <option value="2">대구광역시</option>
-            <option value="3">광주광역시</option>
-            <option value="4">울산광역시</option>
-          </SelectArea>
-
+            ></TextArea>
+          </ItemWrap>
+          <ItemWrap>
+            <SubTitle>지역</SubTitle>
+            <SelectArea id="region" onChange={handleChange}>
+              <option value="0">서울특별시</option>
+              <option value="1">부산광역시</option>
+              <option value="2">대구광역시</option>
+              <option value="3">광주광역시</option>
+              <option value="4">울산광역시</option>
+            </SelectArea>
+          </ItemWrap>
           <CreateButton type="submit">작성 완료</CreateButton>
         </Form>
       </Container>
