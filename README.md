@@ -1,15 +1,15 @@
 이 프로젝트는 [Create React App](https://github.com/facebook/create-react-app)을 통해서 구축되었습니다.
 
-# 프로그라피 6기 - 개같하
+# 프로그라피 6기 - Fitple
 
-## 개발은 같이 하자(개같하) 프로젝트
+## Fitple 프로젝트
 
-> 프로그라피 6기 포맨팀의 프론트엔드 프로젝트 리포지토리 입니다.
+> 프로그라피 6기 Fitple팀의 프론트엔드 프로젝트 리포지토리 입니다.
 
 본 프로젝트는 2개의 리포지토리를 가지고 있습니다.
 
-- [프론트엔드 리포지토리](https://github.com/prography/gaegata-frontend.git)
-- [백엔드 리포지토리](https://github.com/prography/5th-4man-back)
+- [프론트엔드 리포지토리](https://github.com/prography/gaegata-frontend)
+- [백엔드 리포지토리](https://github.com/prography/6th-fitple-backend)
 
 ## 실행
 

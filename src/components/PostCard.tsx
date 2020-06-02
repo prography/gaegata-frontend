@@ -98,22 +98,24 @@ const ImageWrap = styled.div`
 `;
 
 const PostCard: React.FC<Team> = ({
+  id,
   title,
   description,
+  author,
   created_at,
   image,
 }) => {
   return (
     <Card>
       {image && (
-        <Link to="#">
+        <Link to={`/team/detail/${id}`}>
           <ImageWrap>
             <img src={image} />
           </ImageWrap>
         </Link>
       )}
       <ContentWrap>
-        <Link to="#">
+        <Link to={`/team/detail/${id}`}>
           <h4>{title}</h4>
           <p>{description}</p>
         </Link>
@@ -123,7 +125,7 @@ const PostCard: React.FC<Team> = ({
       </ContentWrap>
       <ContentFooter>
         <Avatar size="small">글</Avatar>
-        <span className="user-id">글쓴이</span>
+        <span className="user-id">{author}</span>
       </ContentFooter>
     </Card>
   );

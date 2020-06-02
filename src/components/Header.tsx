@@ -23,7 +23,7 @@ const Header: React.FC<RouteComponentProps & Props> = ({
       {visible && (
         <Modal
           className="main-logo"
-          title="개같하"
+          title="fitple"
           visible={visible}
           footer={null}
           onCancel={handleCancel}
@@ -32,7 +32,7 @@ const Header: React.FC<RouteComponentProps & Props> = ({
       <header className={location.pathname !== '/' ? 'scrolled' : ''}>
         <div className="container display-flex justify-content-space-between">
           <Link to="/" className="logo">
-            개같하
+            Fitple
           </Link>
           <div className="navigation">
             <ul>

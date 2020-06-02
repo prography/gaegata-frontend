@@ -7,11 +7,14 @@ import {
   DetailTeam,
   DETAIL_TEAM,
   detailTeamEntity,
+  ListTeam,
+  LIST_TEAM,
+  listTeamEntity,
 } from '../store/team/action';
 
 const fetchCreateTeam = fetchEntity(createTeamEntity);
 const fetchDetailTeam = fetchEntity(detailTeamEntity);
-
+const fetchListTeam = fetchEntity(listTeamEntity);
 function* watchCreateTeam() {
   while (true) {
     const { params }: CreateTeam = yield take(CREAT_TEAM);
@@ -26,6 +29,17 @@ function* watchDetailTeam() {
   }
 }
 
+function* watchListTeam() {
+  while (true) {
+    const { params }: ListTeam = yield take(LIST_TEAM);
+    yield call(fetchListTeam, params);
+  }
+}
+
 export default function* root() {
-  yield all([fork(watchCreateTeam), fork(watchDetailTeam)]);
+  yield all([
+    fork(watchCreateTeam),
+    fork(watchDetailTeam),
+    fork(watchListTeam),
+  ]);
 }

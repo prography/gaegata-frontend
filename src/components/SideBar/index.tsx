@@ -8,12 +8,11 @@ import {
   NavLogo,
   NavContainer,
   NavGlobalMenu,
-  NavFirstLevelWrap,
-  NavSecondMenuWarp,
-  NavMenu,
+  NavTopWrap,
   NavUserWrap,
   NavUserName,
   NavUserLogin,
+  CreateButton,
 } from './style';
 import 'styles/SideBar.css';
 import 'antd/dist/antd.css';
@@ -43,20 +42,16 @@ const SideBar = () => {
   return (
     <>
       <NavLayout>
-        <NavLogo>개</NavLogo>
+        <NavTopWrap>
+          <NavLogo>
+            <Link to="/">Fitple</Link>
+          </NavLogo>
+          <CreateButton>
+            <Link to="/team/create">팀원 모집하기</Link>
+          </CreateButton>
+        </NavTopWrap>
         <NavContainer>
-          <NavGlobalMenu>
-            <NavFirstLevelWrap>
-              <Link to="/">홈</Link>
-            </NavFirstLevelWrap>
-            <NavSecondMenuWarp>
-              메뉴
-              <NavMenu>
-                <Link to="/team/create">팀생성하기</Link>
-                <li>북마크</li>
-              </NavMenu>
-            </NavSecondMenuWarp>
-          </NavGlobalMenu>
+          <NavGlobalMenu></NavGlobalMenu>
           {isLoggedIn ? (
             <NavUserWrap>
               <NavUserName>{username}</NavUserName>
