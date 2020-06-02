@@ -16,6 +16,10 @@ export const Title = styled.h1`
   text-align: center;
   font-weight: 800;
 `;
+export const SubTitle = styled.div`
+  font-size: 1rem;
+  text-align: center;
+`;
 
 export const Hr = styled.hr`
   width: 100%;
@@ -42,3 +46,28 @@ export const CreateButton = styled.button`
   display: block;
   margin-left: auto;
 `;
+
+export const ImageWrap = styled.div`
+  text-align: center;
+  height: 50%;
+`;
+
+export const TeamPeopleWrap = styled.div``;
+
+export const TeamPeopleTitle = styled.p`
+  font-size: 1.25rem;
+  font-weight: 600;
+`;
+
+export const TeamPeopleContent = styled.div`
+  margin-left: 15px;
+`;
+
+export const TeamPeopleImage = styled.div`
+  width: 48px;
+  height: 48px;
+  background-color: #fff;
+  border-radius: 100%;
+`;
+
+export const TeamPeople = styled.div``;
