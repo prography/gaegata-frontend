@@ -8,12 +8,21 @@ export const NavLayout = styled.div`
   width: 300px;
   height: 100vh;
   background-color: #f7f8fb;
-  border-right : 1px solid #efefef;
+  border-right: 1px solid #efefef;
+`;
+
+export const NavTopWrap = styled.div`
+  height: 10%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
 `;
 
 export const NavLogo = styled.div`
-  height: 10%;
-  padding: 10px;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #3562ff;
 `;
 
 export const NavContainer = styled.div`
@@ -25,7 +34,7 @@ export const NavContainer = styled.div`
 
 export const NavGlobalMenu = styled.div`
   padding: 10px;
-  fontsize: 1rem;
+  font-size: 1rem;
 `;
 
 export const NavFirstLevelWrap = styled.div`
@@ -57,4 +66,24 @@ export const NavUserName = styled.li`
 export const NavUserLogin = styled.li`
   font-size: 0.75rem;
   color: #9e9fa2;
+`;
+
+export const CreateButton = styled.button`
+  width: 40%;
+  height: 30px;
+  border-radius: 15px;
+  border: 0px solid;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: #3562ff;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  a {
+    color: #fff;
+  }
 `;

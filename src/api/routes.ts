@@ -8,7 +8,7 @@ export const routes = [
     exact: true,
   },
   {
-    path: '/createteam',
+    path: '/team/create',
     page: CreateTeam,
     exact: true,
   },
