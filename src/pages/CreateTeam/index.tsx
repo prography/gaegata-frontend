@@ -69,7 +69,7 @@ const CreateTeam: React.FC = () => {
         designer: teamContent.designer,
         region: teamContent.region == '' ? '0' : teamContent.region,
         status: 'delay',
-        goal: '목표',
+        goal: '프로젝트 목표',
         kind: '웹',
         people: '사용고객',
       }),

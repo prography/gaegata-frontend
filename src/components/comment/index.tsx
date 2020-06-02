@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Comment: React.FC = () => {
+const Comment = () => {
   return <div>123123;</div>;
 };
 

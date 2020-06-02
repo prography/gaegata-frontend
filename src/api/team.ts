@@ -31,7 +31,7 @@ export const createTeam = async (payload: TeamParams) => {
 
 export const detailTeam = async (team_id: string) => {
   console.log(team_id);
-  const { data } = await fetcher.get(`/teams/board/${team_id}/`);
+  const { data } = await fetcher.get(`/teams/board/13/`);
   return data;
 };
 
