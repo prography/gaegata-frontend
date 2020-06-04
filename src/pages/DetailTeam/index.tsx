@@ -60,7 +60,16 @@ const DetailTeam: React.FC<RouteComponentProps> = ({ match }) => {
           <ImageWrap>
             <img src={image} style={{ height: '100%' }} />
           </ImageWrap>
-          <Description>{description}</Description>
+          <Description>
+            {description.split('\n').map(line => {
+              return (
+                <>
+                  {line}
+                  <br />
+                </>
+              );
+            })}
+          </Description>
           <Hr />
           <TeamPeopleWrap>
             <TeamPeopleTitle>현재 팀원</TeamPeopleTitle>
