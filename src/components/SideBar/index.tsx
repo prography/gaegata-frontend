@@ -69,8 +69,7 @@ const SideBar = () => {
         <ModalComponent
           handleCancel={handleCancel}
           visible={visible}
-          width={400}
-          title="개같하"
+          width={700}
         >
           {status == 'register' ? (
             <Register />

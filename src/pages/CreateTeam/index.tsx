@@ -49,7 +49,6 @@ const CreateTeam: React.FC = () => {
   useEffect(() => {
     if (status === 'CREATE_SUCCESS') {
       window.alert('팀이 생성 되었습니다.');
-      console.log(id);
       history.push(`/team/detail/${id}`);
     }
     if (status === 'CREATE_FAILTURE') {

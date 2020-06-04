@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { RegisterWrap } from './style';
-import { LoginInput, LoginButton, LoginInputWarp } from '../common/style';
+import { RegisterWrap, RegisterTitle, RegisterContent } from './style';
+import { LoginInput, LoginButton, ItemWrap } from '../Common/style';
 import { RegisterParams } from 'api/auth';
 import { useSelector, useDispatch } from 'react-redux';
 import { register } from 'store/auth/action';
@@ -85,8 +85,11 @@ const Register = () => {
 
   return (
     <RegisterWrap>
-      <LoginInputWarp>
-        <label htmlFor="nickname">이름</label>
+      <RegisterTitle>회원가입</RegisterTitle>
+      <RegisterContent>
+        15초만에 가입하고 빠르게 프로젝트를 진행해보세요!
+      </RegisterContent>
+      <ItemWrap>
         <LoginInput
           type="text"
           name="nickname"
@@ -98,9 +101,8 @@ const Register = () => {
         <div style={{ textAlign: 'left', color: 'red', fontSize: '12px' }}>
           {usernameError}
         </div>
-      </LoginInputWarp>
-      <LoginInputWarp>
-        <label htmlFor="password">비밀번호</label>
+      </ItemWrap>
+      <ItemWrap>
         <LoginInput
           type="password"
           name="password"
@@ -112,9 +114,8 @@ const Register = () => {
         <div style={{ textAlign: 'left', color: 'red', fontSize: '12px' }}>
           {passwordError}
         </div>
-      </LoginInputWarp>
-      <LoginInputWarp>
-        <label htmlFor="passwordCheck">비밀번호 확인</label>
+      </ItemWrap>
+      <ItemWrap>
         <LoginInput
           type="password"
           name="passwordCheck"
@@ -126,11 +127,12 @@ const Register = () => {
         <div style={{ textAlign: 'left', color: 'red', fontSize: '12px' }}>
           {passwordRepeatError}
         </div>
-      </LoginInputWarp>
-
-      <LoginButton onClick={onsubmit} color="#fff" backgroundColor="#5f76f3">
-        회원가입하기
-      </LoginButton>
+      </ItemWrap>
+      <ItemWrap>
+        <LoginButton onClick={onsubmit} color="#fff" backgroundColor="#3562ff">
+          회원가입하기
+        </LoginButton>
+      </ItemWrap>
     </RegisterWrap>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { LoginWrap, LoginTitle, LoginContent } from './style';
-import { LoginButton, LoginInput, LoginInputWarp } from '../common/style';
+import { LoginButton, LoginInput, ItemWrap } from '../Common/style';
 import { useDispatch, useSelector } from 'react-redux';
 import { LoginParams } from 'api/auth';
 import { MailOutlined } from '@ant-design/icons';
@@ -75,14 +75,15 @@ const Login: React.FunctionComponent<Props> = ({ handleCancel }) => {
 
   return (
     <LoginWrap>
-      <LoginTitle>개같하로 개발 같이 하기</LoginTitle>
+      <LoginTitle>시작하기</LoginTitle>
       <LoginContent>
-        15초만에 간편하게 가입하고
-        <br /> 나에게 맞는 팀을 확인하세요!
+        Fitple은 나와 핏이 맞는 사람들과 함께 프로젝트를
+        <br />
+        진행할 수 있는 서비스입니다.
       </LoginContent>
       {status === 'login' ? (
         <>
-          <LoginInputWarp>
+          <ItemWrap>
             <LoginInput
               type="password"
               name="password"
@@ -95,19 +96,25 @@ const Login: React.FunctionComponent<Props> = ({ handleCancel }) => {
             <div style={{ textAlign: 'left', color: 'red', fontSize: '12px' }}>
               {passwordError}
             </div>
-          </LoginInputWarp>
-          <LoginButton
-            onClick={onEmailLogin}
-            color="#fff"
-            backgroundColor="#5f76f3"
+          </ItemWrap>
+          <ItemWrap>
+            <LoginButton
+              onClick={onEmailLogin}
+              color="#fff"
+              backgroundColor="#3562ff"
+            >
+              로그인
+            </LoginButton>
+          </ItemWrap>
+          <div
+            style={{ color: '#3562ff', marginTop: '2%', marginBottom: '7%' }}
           >
-            로그인
-          </LoginButton>
+            비밀번호를 잊으셨나요?
+          </div>
         </>
       ) : (
         <>
-          <LoginInputWarp>
-            <label htmlFor="username">이메일</label>
+          <ItemWrap>
             <LoginInput
               type="email"
               name="username"
@@ -121,14 +128,22 @@ const Login: React.FunctionComponent<Props> = ({ handleCancel }) => {
             <div style={{ textAlign: 'left', color: 'red', fontSize: '12px' }}>
               {emailError}
             </div>
-          </LoginInputWarp>
-          <LoginButton
-            onClick={onEmailCheck}
-            color="#fff"
-            backgroundColor="#5f76f3"
+          </ItemWrap>
+          <ItemWrap>
+            <LoginButton
+              onClick={onEmailCheck}
+              color="#fff"
+              backgroundColor="#3562ff"
+            >
+              이메일로 시작하기
+            </LoginButton>
+          </ItemWrap>
+          <div
+            style={{ textAlign: 'center', marginTop: '3%', marginBottom: '7%' }}
           >
-            <MailOutlined className="icon-margin" /> 이메일로 시작하기
-          </LoginButton>
+            로그인은 개인 정보 보호 정책 및 서비스 약관에 동의하는 것을
+            의미합니다.
+          </div>
         </>
       )}
     </LoginWrap>
