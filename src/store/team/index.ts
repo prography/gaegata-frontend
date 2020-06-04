@@ -66,7 +66,7 @@ const teamReducer = (
         return draft;
       case 'DETAIL_TEAM_SUCCESS':
         draft = {
-          ...action.payload,
+          ...action.payload.board,
         };
         draft.status = 'DETAIL_SUCCESS';
         return draft;
