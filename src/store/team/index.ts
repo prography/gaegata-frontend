@@ -55,7 +55,7 @@ const teamReducer = (
         draft.status = 'FETCHING';
         return draft;
       case 'CREAT_TEAM_SUCCESS':
-        draft.id = action.payload.id;
+        draft.id = action.payload.board.id;
         draft.status = 'CREATE_SUCCESS';
         return draft;
       case 'CREAT_TEAM_FAILURE':
