@@ -28,7 +28,6 @@ const SideBar = () => {
   const { status } = useSelector((state: StoreState) => state.auth.emailCheck);
   const { username, email } = useSelector((state: StoreState) => state.auth.me);
   const dispatch = useDispatch();
-
   const handleVisible = (): void => {
     setVisible(true);
   };
@@ -69,14 +68,9 @@ const SideBar = () => {
         <ModalComponent
           handleCancel={handleCancel}
           visible={visible}
-          width={400}
-          title="개같하"
+          width={700}
         >
-          {status == 'register' ? (
-            <Register />
-          ) : (
-            <Login handleCancel={handleCancel} />
-          )}
+          {status == 'register' ? <Register /> : <Login />}
         </ModalComponent>
       )}
     </>

@@ -9,21 +9,23 @@ interface InputPropsType {
   error?: String;
 }
 
-export const LoginInputWarp = styled.div`
-  padding-bottom: 24px;
+export const ItemWrap = styled.div`
+  padding-bottom: 12px;
   color: #767676;
   text-align: left;
+  display: flex;
+  justify-content: center;
 `;
 
 export const LoginButton = styled.button<ButtonPropsType>`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 50px;
-  border-radius: 10px;
+  width: 50%;
+  height: 60px;
+  border-radius: 40px 40px;
   border: 0px solid;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   color: ${({ color }: ButtonPropsType) => color};
   background-color: ${({ backgroundColor }: ButtonPropsType) =>
@@ -33,12 +35,11 @@ export const LoginButton = styled.button<ButtonPropsType>`
 `;
 
 export const LoginInput = styled.input<InputPropsType>`
-  width: 100%;
-  height: 50px;
-  margin-top: 10px;
+  height: 60px;
+  width: 50%;
   padding-right: 15px;
   padding-left: 15px;
-  border-radius: 5px;
+  border-radius: 40px 40px;
   border: 1px solid #e1e2e3;
   font-size: 15px;
   color: #333;

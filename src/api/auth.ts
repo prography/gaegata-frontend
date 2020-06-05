@@ -1,5 +1,4 @@
 import fetcher from 'utils/fetcher';
-import { User } from 'models/user';
 
 export interface LoginParams {
   email: string;

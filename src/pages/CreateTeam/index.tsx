@@ -49,7 +49,6 @@ const CreateTeam: React.FC = () => {
   useEffect(() => {
     if (status === 'CREATE_SUCCESS') {
       window.alert('팀이 생성 되었습니다.');
-      console.log(id);
       history.push(`/team/detail/${id}`);
     }
     if (status === 'CREATE_FAILTURE') {
@@ -140,11 +139,11 @@ const CreateTeam: React.FC = () => {
           <ItemWrap>
             <SubTitle>지역</SubTitle>
             <SelectArea id="region" onChange={handleChange}>
-              <option value="0">서울특별시</option>
-              <option value="1">부산광역시</option>
-              <option value="2">대구광역시</option>
-              <option value="3">광주광역시</option>
-              <option value="4">울산광역시</option>
+              <option value="서울특별시">서울특별시</option>
+              <option value="부산광역시">부산광역시</option>
+              <option value="대구광역시">대구광역시</option>
+              <option value="광주광역시">광주광역시</option>
+              <option value="울산광역시">울산광역시</option>
             </SelectArea>
           </ItemWrap>
           <CreateButton type="submit">작성 완료</CreateButton>
