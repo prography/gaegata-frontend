@@ -37,7 +37,7 @@ export const CreateButton = styled.button`
   height: 30px;
   border-radius: 15px;
   border: 0px solid;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 600;
   background-color: #3562ff;
   color: #ffffff;

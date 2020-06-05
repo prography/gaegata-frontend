@@ -5,6 +5,7 @@ import { Team } from 'models/team';
 export type TeamState = {
   team: Team & {
     status: string;
+    application: boolean;
   };
   teamList: {
     list: {
@@ -33,6 +34,7 @@ const initialState: TeamState = {
     people: '',
     image: '',
     created_at: '',
+    application: false,
   },
   teamList: {
     list: {
@@ -68,6 +70,7 @@ const teamReducer = (
         draft = {
           ...action.payload.board,
         };
+        draft.application = action.payload.application;
         draft.status = 'DETAIL_SUCCESS';
         return draft;
       case 'DETAIL_TEAM_FAILURE':

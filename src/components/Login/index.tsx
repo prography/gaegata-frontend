@@ -7,10 +7,7 @@ import { MailOutlined } from '@ant-design/icons';
 import 'styles/login.css';
 import { login, emailCheck } from 'store/auth/action';
 
-interface Props {
-  handleCancel: () => void;
-}
-const Login: React.FunctionComponent<Props> = ({ handleCancel }) => {
+const Login: React.FunctionComponent = () => {
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
 

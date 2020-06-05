@@ -20,14 +20,27 @@ import { RouteComponentProps } from 'react-router-dom';
 import { reset } from 'store/auth/action';
 import ModalComponent from 'components/Modal/index';
 import ApplyTeam from 'components/ApplyTeam';
+import ApplicantCheck from 'components/ApplicantCheck';
 
 const DetailTeam: React.FC<RouteComponentProps> = ({ match }) => {
   const [visible, setVisible] = useState(false);
   const team_id = match.params;
   const dispatch = useDispatch();
-  const team = useSelector((state: StoreState) => state.team.team);
 
-  const { title, description, image, designer, developer, planner } = team;
+  const team = useSelector((state: StoreState) => state.team.team);
+  const { username } = useSelector((state: StoreState) => state.auth.me);
+  const { applicants } = useSelector((state: StoreState) => state.applyTeam);
+
+  const {
+    title,
+    description,
+    image,
+    designer,
+    developer,
+    planner,
+    author,
+    application,
+  } = team;
   const getData = useCallback(() => {
     dispatch(detailTeam(team_id));
   }, [dispatch, team_id]);
@@ -55,10 +68,18 @@ const DetailTeam: React.FC<RouteComponentProps> = ({ match }) => {
             모집 인원(기획자 : {planner}명, 개발자 : {developer}명, 디자이너 :{' '}
             {designer}명)
           </SubTitle>
-          <CreateButton onClick={handleVisible}>지원하기</CreateButton>
+          {username !== author ? (
+            application ? (
+              <CreateButton onClick={handleVisible}>신청취소</CreateButton>
+            ) : (
+              <CreateButton onClick={handleVisible}>지원하기</CreateButton>
+            )
+          ) : (
+            <CreateButton onClick={handleVisible}>신청자보기</CreateButton>
+          )}
           <Hr />
           <ImageWrap>
-            <img src={image} style={{ height: '100%' }} />
+            <img src={image} style={{ height: '50%', width: '50%' }} />
           </ImageWrap>
           <Description>
             {description.split('\n').map(line => {
@@ -84,13 +105,21 @@ const DetailTeam: React.FC<RouteComponentProps> = ({ match }) => {
         </Container>
       </DetailTeamWrap>
 
-      {visible && (
+      {visible && username !== author ? (
         <ModalComponent
           handleCancel={handleCancel}
           visible={visible}
           width={600}
         >
-          <ApplyTeam></ApplyTeam>
+          <ApplyTeam handleCancel={handleCancel}></ApplyTeam>
+        </ModalComponent>
+      ) : (
+        <ModalComponent
+          handleCancel={handleCancel}
+          visible={visible}
+          width={600}
+        >
+          <ApplicantCheck team_id={team_id} />
         </ModalComponent>
       )}
     </>
