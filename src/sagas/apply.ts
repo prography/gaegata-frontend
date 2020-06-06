@@ -7,10 +7,13 @@ import {
   applicantsEntity,
   APPLICANT_LIST,
   Applicants,
+  APPROVE_APPLICANT,
+  approveApplicantEntity,
 } from '../store/apply/action';
 
 const fetchApplyTeam = fetchEntity(applyTeamEntity);
 const fetchApplicantList = fetchEntity(applicantsEntity);
+const fetchAproveApprlicant = fetchEntity(approveApplicantEntity);
 
 function* watchApplyTeam() {
   while (true) {
@@ -26,6 +29,17 @@ function* watchApplicantList() {
   }
 }
 
+function* watchAproveApplicant() {
+  while (true) {
+    const { params }: Applicants = yield take(APPROVE_APPLICANT);
+    yield call(fetchAproveApprlicant, params);
+  }
+}
+
 export default function* root() {
-  yield all([fork(watchApplyTeam), fork(watchApplicantList)]);
+  yield all([
+    fork(watchApplyTeam),
+    fork(watchApplicantList),
+    fork(watchAproveApplicant),
+  ]);
 }
