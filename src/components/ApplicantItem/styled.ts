@@ -6,11 +6,11 @@ export const ApplicantItemWrap = styled.div`
   background-color: #f7f8fb;
   padding: 10px;
   justify-content: space-between;
+  margin: 3% 0;
 `;
 
 export const ApplicantName = styled.span`
-  font-weight: 800;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   margin: 5% 5%;
 `;
 
