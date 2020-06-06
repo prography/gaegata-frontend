@@ -30,8 +30,16 @@ export const createTeam = async (payload: TeamParams) => {
 };
 
 export const detailTeam = async ({ team_id }: { team_id: string }) => {
-  const { data } = await fetcher.get(`/teams/board/${team_id}/`);
-
+  const token = getAuthToken();
+  const headers = token
+    ? {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      }
+    : {};
+  const { data } = await fetcher.get(`/teams/board/${team_id}/`, {
+    headers: headers,
+  });
   return data;
 };
 
