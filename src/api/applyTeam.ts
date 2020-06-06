@@ -32,7 +32,11 @@ export interface ApplicantParams {
   team_id: string;
 }
 
-export const getApplicantList = async ({ team_id }: { team_id: string }) => {
+export const getApplicantList = async ({
+  team_id,
+}: {
+  team_id: ApplicantParams;
+}) => {
   const token = getAuthToken();
   const headers = token
     ? {
@@ -41,6 +45,24 @@ export const getApplicantList = async ({ team_id }: { team_id: string }) => {
       }
     : {};
   const { data } = await fetcher.get(`teams/board/${team_id}/applications/`, {
+    headers: headers,
+  });
+  return data;
+};
+
+export interface ApproveApplicantParams {
+  id: number;
+}
+
+export const getApproveApplicant = async (id: ApproveApplicantParams) => {
+  const token = getAuthToken();
+  const headers = token
+    ? {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      }
+    : {};
+  const { data } = await fetcher.get(`applications/${id}/approve/`, {
     headers: headers,
   });
   return data;

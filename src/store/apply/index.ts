@@ -13,6 +13,9 @@ export type ApplyTeamState = {
     };
     status: string;
   };
+  aproveApplicant: {
+    status: string;
+  };
 };
 
 const initialState: ApplyTeamState = {
@@ -25,6 +28,9 @@ const initialState: ApplyTeamState = {
       applications: [],
       message: '',
     },
+    status: '',
+  },
+  aproveApplicant: {
     status: '',
   },
 };
@@ -75,7 +81,29 @@ const applicantsReducer = (
   });
 };
 
+const applyApplicantReducer = (
+  state = initialState.aproveApplicant,
+  action: any,
+): ApplyTeamState['aproveApplicant'] => {
+  return produce(state, draft => {
+    switch (action.type) {
+      case 'APROVE_APPLICANT_REQUEST':
+        draft.status = 'FETCHING';
+        return draft;
+      case 'APROVE_APPLICANT_SUCCESS':
+        draft.status = 'SUCCESS';
+        return draft;
+      case 'APROVE_APPLICANT_FAILURE':
+        draft.status = 'FAILTURE';
+        return draft;
+      default:
+        return draft;
+    }
+  });
+};
+
 export default combineReducers({
   applyTeam: applyTeamReducer,
   applicants: applicantsReducer,
+  aproveApplicant: applyApplicantReducer,
 });

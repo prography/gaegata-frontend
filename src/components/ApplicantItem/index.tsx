@@ -13,7 +13,8 @@ const ApplicantItem = ({
   join_status,
   job,
   created_at,
-}: Applicants) => {
+  handleApprove,
+}: Applicants & { handleApprove: (id: number) => {} }) => {
   const { username, image } = applicant;
 
   return (
@@ -30,7 +31,11 @@ const ApplicantItem = ({
         <ApplicantImage></ApplicantImage>
         <ApplicantName>{username}</ApplicantName>
       </div>
-      <ApplyButton>승인하기</ApplyButton>
+      {join_status == 'Waiting' ? (
+        <ApplyButton onClick={() => handleApprove(id)}>승인하기</ApplyButton>
+      ) : (
+        <ApplyButton onClick={() => handleApprove(id)}>취소하기</ApplyButton>
+      )}
     </ApplicantItemWrap>
   );
 };
