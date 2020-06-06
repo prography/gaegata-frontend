@@ -29,7 +29,9 @@ const DetailTeam: React.FC<RouteComponentProps> = ({ match }) => {
 
   const team = useSelector((state: StoreState) => state.team.team);
   const { username } = useSelector((state: StoreState) => state.auth.me);
-  const { applicants } = useSelector((state: StoreState) => state.applyTeam);
+  const { applyStatus } = useSelector(
+    (state: StoreState) => state.applyTeam.applyTeam,
+  );
 
   const {
     title,
@@ -47,7 +49,7 @@ const DetailTeam: React.FC<RouteComponentProps> = ({ match }) => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [applyStatus]);
 
   const handleVisible = (): void => {
     setVisible(true);
@@ -70,7 +72,7 @@ const DetailTeam: React.FC<RouteComponentProps> = ({ match }) => {
           </SubTitle>
           {username !== author ? (
             application ? (
-              <CreateButton onClick={handleVisible}>신청취소</CreateButton>
+              <CreateButton>신청취소</CreateButton>
             ) : (
               <CreateButton onClick={handleVisible}>지원하기</CreateButton>
             )
