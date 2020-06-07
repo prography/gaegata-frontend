@@ -1,8 +1,12 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { ApplicantCheckWrap, ApplicantCheckTitle } from './styled';
 import { useDispatch, useSelector } from 'react-redux';
 import ApplicantItem from '../ApplicantItem';
-import { applicants, approveApplicant } from 'store/apply/action';
+import {
+  applicants,
+  approveApplicant,
+  refuseApplicant,
+} from 'store/apply/action';
 
 interface Props {
   team_id: object;
@@ -18,13 +22,16 @@ const ApplicantCheck: React.FunctionComponent<Props> = ({ team_id }) => {
     dispatch(approveApplicant(id));
   };
 
-  const getApplicantList = useCallback(() => {
-    dispatch(applicants(team_id));
-  }, [dispatch, team_id]);
+  const handleRefuse = (id: number) => {
+    dispatch(refuseApplicant(id));
+  };
 
+  const getApplicantList = () => {
+    dispatch(applicants(team_id));
+  };
   useEffect(() => {
     getApplicantList();
-  }, [applyList]);
+  }, []);
 
   return (
     <ApplicantCheckWrap>
@@ -35,6 +42,7 @@ const ApplicantCheck: React.FunctionComponent<Props> = ({ team_id }) => {
               <ApplicantItem
                 {...applyData}
                 handleApprove={handleApprove}
+                handleRefuse={handleRefuse}
               ></ApplicantItem>
             ))
           : '신청자가 아직 없습니다.'}
