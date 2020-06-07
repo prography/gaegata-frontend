@@ -95,6 +95,14 @@ const applyApplicantReducer = (
         return draft;
       case 'APROVE_APPLICANT_FAILURE':
         draft.status = 'FAILTURE';
+      case 'REFUSE_APPLICANT_REQUEST':
+        draft.status = 'FETCHING';
+        return draft;
+      case 'REFUSE_APPLICANT_SUCCESS':
+        draft.status = 'SUCCESS';
+        return draft;
+      case 'REFUSE_APPLICANT_FAILURE':
+        draft.status = 'FAILTURE';
         return draft;
       default:
         return draft;

@@ -67,3 +67,17 @@ export const getApproveApplicant = async (id: ApproveApplicantParams) => {
   });
   return data;
 };
+
+export const getRefuseApplicant = async (id: ApproveApplicantParams) => {
+  const token = getAuthToken();
+  const headers = token
+    ? {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      }
+    : {};
+  const { data } = await fetcher.get(`applications/${id}/refuse/`, {
+    headers: headers,
+  });
+  return data;
+};

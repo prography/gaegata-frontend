@@ -1,12 +1,21 @@
 import styled from 'styled-components';
 
+interface Props {
+  show: boolean;
+}
+
+export const ApplicantItemContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #f7f8fb;
+  margin: 3% 0;
+`;
+
 export const ApplicantItemWrap = styled.div`
   display: flex;
   flex-direction: row;
-  background-color: #f7f8fb;
-  padding: 10px;
   justify-content: space-between;
-  margin: 3% 0;
+  width: 100%;
 `;
 
 export const ApplicantName = styled.span`
@@ -24,14 +33,23 @@ export const ApplicantImage = styled.div`
 `;
 
 export const ApplyButton = styled.button`
-  border-radius: 5px 5px;
+  width: 20%;
+  height: 30px;
+  border-radius: 15px;
   border: 0px solid;
-  font-size: 14px;
-  text-align: center;
-  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 600;
   background-color: #3562ff;
   color: #fff;
-  height: 40px;
-  width: 120px;
-  margin: 4% 0;
+  text-align: center;
+  cursor: pointer;
+  display: block;
+  margin: 5% 1%;
+  a {
+    color: #fff;
+  }
+`;
+
+export const ApplicantContent = styled.div<Props>`
+  display: ${({ show }: Props) => (show ? 'show' : 'none')};
 `;

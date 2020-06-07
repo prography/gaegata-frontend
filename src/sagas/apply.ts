@@ -9,11 +9,15 @@ import {
   Applicants,
   APPROVE_APPLICANT,
   approveApplicantEntity,
+  RefuseApplicant,
+  refuseApplicantEntity,
+  REFUSE_APPLICANT,
 } from '../store/apply/action';
 
 const fetchApplyTeam = fetchEntity(applyTeamEntity);
 const fetchApplicantList = fetchEntity(applicantsEntity);
-const fetchAproveApprlicant = fetchEntity(approveApplicantEntity);
+const fetchAproveApplicant = fetchEntity(approveApplicantEntity);
+const fetchRefuseApplicant = fetchEntity(refuseApplicantEntity);
 
 function* watchApplyTeam() {
   while (true) {
@@ -32,7 +36,14 @@ function* watchApplicantList() {
 function* watchAproveApplicant() {
   while (true) {
     const { params }: Applicants = yield take(APPROVE_APPLICANT);
-    yield call(fetchAproveApprlicant, params);
+    yield call(fetchAproveApplicant, params);
+  }
+}
+
+function* watchRefuseApplicant() {
+  while (true) {
+    const { params }: RefuseApplicant = yield take(REFUSE_APPLICANT);
+    yield call(fetchRefuseApplicant, params);
   }
 }
 
@@ -41,5 +52,6 @@ export default function* root() {
     fork(watchApplyTeam),
     fork(watchApplicantList),
     fork(watchAproveApplicant),
+    fork(watchRefuseApplicant),
   ]);
 }

@@ -4,6 +4,8 @@ import {
   ApplicantName,
   ApplicantImage,
   ApplyButton,
+  ApplicantItemContainer,
+  ApplicantContent,
 } from './styled';
 import { Applicants } from 'models/apply';
 
@@ -14,29 +16,57 @@ const ApplicantItem = ({
   job,
   created_at,
   handleApprove,
-}: Applicants & { handleApprove: (id: number) => {} }) => {
+  handleRefuse,
+}: Applicants & {
+  handleApprove: (id: number) => {};
+  handleRefuse: (id: number) => {};
+}) => {
   const { username, image } = applicant;
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => {
+    setShow(!show);
+  };
 
   return (
-    <ApplicantItemWrap>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          backgroundColor: '#f7f8fb',
-          padding: '10px',
-          width: '300px',
-        }}
-      >
-        <ApplicantImage></ApplicantImage>
-        <ApplicantName>{username}</ApplicantName>
-      </div>
-      {join_status == 'Waiting' ? (
-        <ApplyButton onClick={() => handleApprove(id)}>승인하기</ApplyButton>
-      ) : (
-        <ApplyButton onClick={() => handleApprove(id)}>취소하기</ApplyButton>
-      )}
-    </ApplicantItemWrap>
+    <ApplicantItemContainer>
+      <ApplicantItemWrap>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            backgroundColor: '#f7f8fb',
+            padding: '10px',
+            width: '300px',
+          }}
+        >
+          <ApplicantImage>
+            <img src={image} style={{ borderRadius: '100%', height: '100%' }} />
+          </ApplicantImage>
+          <ApplicantName>{username}</ApplicantName>
+        </div>
+        {join_status == 'Waiting' ? (
+          <>
+            <ApplyButton onClick={() => handleApprove(id)}>
+              승인하기
+            </ApplyButton>
+            <ApplyButton onClick={() => handleRefuse(id)}>거절하기</ApplyButton>
+          </>
+        ) : (
+          <ApplyButton onClick={() => handleRefuse(id)}>취소하기</ApplyButton>
+        )}
+        <div
+          style={{ marginTop: '5%', marginRight: '2%' }}
+          onClick={() => handleShow()}
+        >
+          <img src="/images/arrow.png" alt="상세보기" />
+        </div>
+      </ApplicantItemWrap>
+      <ApplicantContent show={show}>
+        직무 : {job} <br />
+        신청일 : {created_at}
+      </ApplicantContent>
+    </ApplicantItemContainer>
   );
 };
 

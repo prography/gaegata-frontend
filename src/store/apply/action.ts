@@ -4,6 +4,7 @@ import * as authApi from '../../api/applyTeam';
 export const APPLY_TEAM = 'APPLY_TEAM';
 export const APPLICANT_LIST = 'APPLICANT_LIST';
 export const APPROVE_APPLICANT = 'APPROVE_APPLICANT';
+export const REFUSE_APPLICANT = 'REFUSE_APPLICANT';
 
 export const applyTeamEntity = createEntity(APPLY_TEAM, authApi.postApplyTeam);
 export const applyTeam = (params: authApi.ApplyTeamParams) => ({
@@ -29,6 +30,16 @@ export const approveApplicant = (params: number | {}) => ({
   params,
 });
 
+export const refuseApplicantEntity = createEntity(
+  REFUSE_APPLICANT,
+  authApi.getRefuseApplicant,
+);
+export const refuseApplicant = (params: number | {}) => ({
+  type: REFUSE_APPLICANT,
+  params,
+});
+
 export type ApplyTeam = ReturnType<typeof applyTeam>;
 export type Applicants = ReturnType<typeof applicants>;
 export type ApproveApplicant = ReturnType<typeof approveApplicant>;
+export type RefuseApplicant = ReturnType<typeof refuseApplicant>;
