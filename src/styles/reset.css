@@ -23,3 +23,8 @@ button {
 body {
   background-color: #f7f8fb;
 }
+
+.ant-modal-body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
