@@ -44,7 +44,7 @@ const Login: React.FunctionComponent = () => {
       window.alert('로그인되었습니다.');
       window.location.href = '/';
     }
-    if (loginStatus === 'FAILURE') {
+    if (loginStatus === 'FAILTURE') {
       window.alert('비밀번호가 일치하지않습니다.');
     }
   }, [loginStatus]);
