@@ -18,10 +18,10 @@ import 'styles/SideBar.css';
 import 'antd/dist/antd.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { reset } from 'store/auth/action';
+import { destroyAuthToken } from 'utils/auth';
 
 const SideBar = () => {
   const [visible, setVisible] = useState(false);
-
   const isLoggedIn = useSelector(
     (state: StoreState) => state.auth.me.isLoggedIn,
   );
@@ -37,6 +37,12 @@ const SideBar = () => {
 
     return visible;
   }, [visible]);
+
+  const handleLogout = () => {
+    destroyAuthToken();
+    alert('로그아웃되었습니다.');
+    window.location.href = '/';
+  };
 
   return (
     <>
@@ -55,6 +61,7 @@ const SideBar = () => {
             <NavUserWrap>
               <NavUserName>{username}</NavUserName>
               <NavUserLogin>{email}</NavUserLogin>
+              <button onClick={handleLogout}>로그아웃</button>
             </NavUserWrap>
           ) : (
             <NavUserWrap onClick={handleVisible}>
