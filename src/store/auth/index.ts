@@ -34,6 +34,8 @@ const initialState: AuthState = {
     id: -1,
     username: '',
     email: '',
+    phone: '',
+    livingArea: '',
     isLoggedIn: false,
   },
 };
@@ -119,7 +121,7 @@ const meReducer = (
         return draft;
       case 'ME_SUCCESS':
         draft = {
-          ...action.payload,
+          ...action.payload.profile,
           isLoggedIn: true,
         };
         return draft;
