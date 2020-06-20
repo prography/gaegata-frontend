@@ -59,7 +59,10 @@ const SideBar = () => {
           <NavGlobalMenu></NavGlobalMenu>
           {isLoggedIn ? (
             <NavUserWrap>
-              <NavUserName>{username}</NavUserName>
+              <NavUserName>
+                {' '}
+                <Link to="/mypage">{username}</Link>
+              </NavUserName>
               <NavUserLogin>{email}</NavUserLogin>
               <button onClick={handleLogout}>로그아웃</button>
             </NavUserWrap>
