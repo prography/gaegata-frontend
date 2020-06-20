@@ -21,31 +21,23 @@ const fetchEmail = fetchEntity(emailCheckEntity);
 const fetchMe = fetchEntity(meEntity);
 
 function* watchRegister() {
-  while (true) {
-    const { params }: Register = yield take(REGISTER);
-    yield call(fetchRegister, params);
-  }
+  const { params }: Register = yield take(REGISTER);
+  yield call(fetchRegister, params);
 }
 
 function* watchLogin() {
-  while (true) {
-    const { params }: Login = yield take(LOGIN);
-    yield call(fetchLogin, params);
-  }
+  const { params }: Login = yield take(LOGIN);
+  yield call(fetchLogin, params);
 }
 
 function* watchEmailCheck() {
-  while (true) {
-    const { params }: EmailCheck = yield take(EMAIL_CHECK);
-    yield call(fetchEmail, params);
-  }
+  const { params }: EmailCheck = yield take(EMAIL_CHECK);
+  yield call(fetchEmail, params);
 }
 
 function* watchMe() {
-  while (true) {
-    const { token }: Me = yield take(ME);
-    yield call(fetchMe, token);
-  }
+  const { token }: Me = yield take(ME);
+  yield call(fetchMe, token);
 }
 
 export default function* root() {
