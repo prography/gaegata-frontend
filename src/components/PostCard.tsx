@@ -116,17 +116,17 @@ const PostCard: React.FC<Team> = ({
       )}
       <ContentWrap>
         <Link to={`/team/detail/${id}`}>
-          <h4>{title}</h4>
+          <div>
+            <Avatar size="large">글</Avatar>
+            <div style={{ display: 'inline-block', marginLeft: '15px' }}>
+              <h4 style={{ margin: '0px' }}>{title}</h4>
+              <span className="user-id">{author}</span>
+            </div>
+          </div>
           <p>{description}</p>
         </Link>
-        <div className="sub-info">
-          <span>{created_at}</span>
-        </div>
       </ContentWrap>
-      <ContentFooter>
-        <Avatar size="small">글</Avatar>
-        <span className="user-id">{author}</span>
-      </ContentFooter>
+      <ContentFooter>개발자, 디자이너, 기획자</ContentFooter>
     </Card>
   );
 };

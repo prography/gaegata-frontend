@@ -8,6 +8,11 @@
 
 a {
   text-decoration: none;
+  color: rgb(91, 92, 95);
+}
+
+a:hover {
+  color: rgb(91, 92, 95);
 }
 
 li {
@@ -27,4 +32,8 @@ body {
 .ant-modal-body {
   overflow-x: hidden;
   overflow-y: scroll;
+}
+
+.ant-avatar {
+  vertical-align: 0px;
 }
