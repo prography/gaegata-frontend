@@ -69,20 +69,15 @@ export const NavUserLogin = styled.li`
 `;
 
 export const CreateButton = styled.button`
-  width: 40%;
-  height: 30px;
-  border-radius: 15px;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 30px;
   border: 0px solid;
   font-size: 0.75rem;
-  font-weight: 600;
   background-color: #3562ff;
   color: #fff;
   text-align: center;
   cursor: pointer;
-  display: block;
-  margin-left: auto;
-  margin-top: 5%;
-  margin-bottom: 5%;
   a {
     color: #fff;
   }
