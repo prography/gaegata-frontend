@@ -38,6 +38,7 @@ const CreateTeam: React.FC = () => {
     developer: 0,
     designer: 0,
     region: '',
+    goal: '',
   });
 
   const [question1, setQuestion1] = useState('');
@@ -127,19 +128,6 @@ const CreateTeam: React.FC = () => {
       questionArr.push(question3Param);
     }
 
-    const team = {
-      title: teamContent.title,
-      description: teamContent.description,
-      region: teamContent.region,
-      planner: teamContent.planner,
-      developer: teamContent.developer,
-      designer: teamContent.designer,
-      goal: teamContent.goal,
-      image: image,
-    };
-    const questions = questionArr;
-
-    const formdata1 = new FormData();
     const formdata = new FormData();
 
     formdata.append('title', teamContent.title);
@@ -148,15 +136,9 @@ const CreateTeam: React.FC = () => {
     formdata.append('planner', teamContent.planner.toString());
     formdata.append('developer', teamContent.developer.toString());
     formdata.append('designer', teamContent.designer.toString());
-    if (teamContent.goal) {
-      formdata.append('goal', teamContent.goal);
-    }
+    formdata.append('goal', '취직');
     formdata.append('image', image);
-    //formdata.append('questions', JSON.stringify(questions));
-    //formdata1.append('team', formdata);
-    for (var value of formdata.values()) {
-      console.log(value);
-    }
+    formdata.append('questions', JSON.stringify(questionArr));
 
     await dispatch(createTeam(formdata));
   };

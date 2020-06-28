@@ -13,7 +13,7 @@ export interface TeamParams {
   designer: number;
   region: string;
   active_status?: string;
-  goal?: string;
+  goal: string;
   image?: string;
   questions?: Question[];
 }
@@ -23,15 +23,11 @@ export const createTeam = async (payload: FormData) => {
   const headers = token
     ? {
         Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
+        'content-type':
+          'multipart/form-data; boundary=ebf9f03029db4c2799ae16b5428b06bd',
       }
     : {};
 
-  console.log(payload);
-
-  for (var value of payload.values()) {
-    console.log(value);
-  }
   const { data } = await fetcher.post('/teams/board/', payload, {
     headers: headers,
   });
