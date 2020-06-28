@@ -1,16 +1,16 @@
+import { User } from './user';
+
 export interface Team {
   id: number;
   title: string;
-  author: string;
+  author: User;
   description: string;
-  planner: number;
-  developer: number;
-  designer: number;
+  planner?: number;
+  developer?: number;
+  designer?: number;
   region?: string;
   status?: string;
   goal?: string;
-  kind?: string;
-  people?: string;
   image?: string;
   created_at: string;
 }

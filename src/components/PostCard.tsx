@@ -99,11 +99,11 @@ const ImageWrap = styled.div`
 
 const PostCard: React.FC<Team> = ({
   id,
+  author,
+  image,
+  region,
   title,
   description,
-  author,
-  created_at,
-  image,
 }) => {
   return (
     <Card>
@@ -117,13 +117,22 @@ const PostCard: React.FC<Team> = ({
       <ContentWrap>
         <Link to={`/team/detail/${id}`}>
           <div>
-            <Avatar size="large">글</Avatar>
+            <Avatar size="large" src={author.image}></Avatar>
             <div style={{ display: 'inline-block', marginLeft: '15px' }}>
               <h4 style={{ margin: '0px' }}>{title}</h4>
-              <span className="user-id">{author}</span>
+              <span style={{ fontWeight: 600 }}>{author.username}</span>
+              <span
+                style={{
+                  marginLeft: '10px',
+                  color: '#BDBDBD',
+                  fontWeight: 600,
+                }}
+              >
+                {region}
+              </span>
             </div>
           </div>
-          <p>{description}</p>
+          <p style={{ color: '#BDBDBD', fontWeight: 600 }}>{description}</p>
         </Link>
       </ContentWrap>
       <ContentFooter>개발자, 디자이너, 기획자</ContentFooter>

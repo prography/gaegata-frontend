@@ -6,7 +6,7 @@ export const DETAIL_TEAM = 'DETAIL_TEAM';
 export const LIST_TEAM = 'LIST_TEAM';
 
 export const createTeamEntity = createEntity(CREAT_TEAM, authApi.createTeam);
-export const createTeam = (params: authApi.TeamParams) => ({
+export const createTeam = (params: FormData) => ({
   type: CREAT_TEAM,
   params,
 });

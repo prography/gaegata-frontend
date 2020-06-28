@@ -22,7 +22,7 @@ const initialState: TeamState = {
   team: {
     id: -1,
     title: '',
-    author: '',
+    author: { id: -1, username: '' },
     description: '',
     planner: 0,
     developer: 0,
@@ -30,8 +30,6 @@ const initialState: TeamState = {
     region: '',
     status: '',
     goal: '',
-    kind: '',
-    people: '',
     image: '',
     created_at: '',
     application: false,
