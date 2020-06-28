@@ -70,7 +70,7 @@ const DetailTeam: React.FC<RouteComponentProps> = ({ match }) => {
             모집 인원(기획자 : {planner}명, 개발자 : {developer}명, 디자이너 :{' '}
             {designer}명)
           </SubTitle>
-          {username !== author ? (
+          {username !== author.username ? (
             application ? (
               <CreateButton>신청취소</CreateButton>
             ) : (
@@ -107,7 +107,7 @@ const DetailTeam: React.FC<RouteComponentProps> = ({ match }) => {
         </Container>
       </DetailTeamWrap>
 
-      {visible && username !== author ? (
+      {visible && username !== author.username ? (
         <ModalComponent
           handleCancel={handleCancel}
           visible={visible}
