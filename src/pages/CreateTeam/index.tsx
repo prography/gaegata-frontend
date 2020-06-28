@@ -37,7 +37,7 @@ const CreateTeam: React.FC = () => {
     planner: 0,
     developer: 0,
     designer: 0,
-    region: '',
+    region: '서울특별시',
     goal: '',
   });
 
