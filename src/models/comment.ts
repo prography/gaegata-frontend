@@ -1,7 +1,9 @@
+import { User } from './user';
+
 export interface IComment {
   team: number;
   id?: number;
-  user?: string;
+  user?: User;
   parent?: number;
   comment: string;
   created_at?: string;

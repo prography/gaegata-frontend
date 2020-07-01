@@ -20,10 +20,10 @@ const CommentContainer = ({ team_id }: { team_id: number }) => {
   }, [dispatch, team_id]);
 
   // 댓글 등록
-  const handleSubmit = async (data: string) => {
+  const handleSubmit = async (data: { comment: string; parent?: number }) => {
     try {
       const params = {
-        comment: data,
+        ...data,
         team: team_id,
       };
 
@@ -42,10 +42,12 @@ const CommentContainer = ({ team_id }: { team_id: number }) => {
 
   return (
     <>
-      <div id="#comment" className="team-comment-wrap">
-        <h2 className="text-bold">{parent_comments.length}개의 댓글</h2>
+      <div id="#comment" style={{ padding: '50px 0 100px' }}>
+        <h2 style={{ fontFamily: 'Noto Sans Bold' }}>
+          {parent_comments.length}개의 댓글
+        </h2>
         {isLoggedIn ? (
-          <div className="mb-20">
+          <div style={{ marginBottom: '20px!important' }}>
             <CommentInput commentUpdate={handleSubmit} />
           </div>
         ) : (

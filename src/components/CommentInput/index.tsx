@@ -1,18 +1,23 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { Input, Button, message } from 'antd';
+import { Button, message } from 'antd';
+import { CommetTextArea, CommentInputWrap, CommetBtnWrap } from './styled';
 
-const CommentInput = ({ commentUpdate }: any) => {
-  const [body, setBody] = useState('');
+type CommentInputProps = {
+  commentUpdate: (params: { parent?: number; comment: string }) => {};
+};
+
+const CommentInput = ({ commentUpdate }: CommentInputProps) => {
+  const [comment, setComment] = useState('');
   const [loading, setLoading] = useState(false);
 
   const cleanUp = useCallback(() => {
-    setBody('');
+    setComment('');
     setLoading(false);
   }, []);
 
   const onSubmit = async () => {
     // 댓글을 아무것도 적지 않았을 때
-    if (!body) {
+    if (!comment) {
       message.error('댓글은 한글자 이상 입력해주세요.');
 
       return false;
@@ -20,7 +25,11 @@ const CommentInput = ({ commentUpdate }: any) => {
 
     setLoading(true);
 
-    await commentUpdate(body);
+    const params = {
+      comment,
+    };
+
+    await commentUpdate(params);
 
     cleanUp();
   };
@@ -33,20 +42,21 @@ const CommentInput = ({ commentUpdate }: any) => {
   }, []);
 
   return (
-    <div className="comment-input-wrap pb-20">
-      <Input.TextArea
-        className="comment-input"
-        value={body}
-        onChange={e => setBody(e.target.value)}
+    <CommentInputWrap>
+      <CommetTextArea
+        value={comment}
+        onChange={e => setComment(e.target.value)}
       />
-      <div className="comment-btn-wrap">
-        <div className="comment-btn-list">
-          <Button className="add-btn" onClick={onSubmit} loading={loading}>
-            {'등록'}
-          </Button>
-        </div>
-      </div>
-    </div>
+      <CommetBtnWrap>
+        <Button
+          style={{ color: '#fff', backgroundColor: '#5f76f3' }}
+          onClick={onSubmit}
+          loading={loading}
+        >
+          등록
+        </Button>
+      </CommetBtnWrap>
+    </CommentInputWrap>
   );
 };
 

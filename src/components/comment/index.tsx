@@ -4,50 +4,68 @@ import moment from 'moment';
 
 import CommentInput from 'components/CommentInput';
 import CommentList from 'components/CommentList';
+import * as CommentActions from 'components/CommentActions';
+import { User } from 'models/user';
+import { IComment } from 'models/comment';
+import { CommentNickname, CommentContent } from './styled';
+
+type CommentProrps = {
+  id: number;
+  user: User;
+  body: string;
+  created_at: string;
+  handleSubmit: (data: { parent?: number; comment: string }) => {};
+  isLoggedIn: boolean;
+  reply: IComment[];
+};
 
 const Comment = ({
   id,
-  parent_id,
   user,
   body,
-  isChild,
   created_at,
   handleSubmit,
   isLoggedIn,
-}: any) => {
+  reply,
+}: CommentProrps) => {
   const [openInput, setToggleInput] = useState(false);
-  const [isChange, setIsChange] = useState(false);
 
   const commentSubmit = async (data: any) => {
     const params = {
       parent: id,
-      body: data.body,
+      comment: data.comment,
     };
 
     const re = await handleSubmit(params);
 
     return re;
   };
+
+  const actions = () => {
+    const actionArr = [];
+    if (reply.length > 0) {
+      actionArr.unshift(
+        <CommentActions.ToggleBtn
+          setToggleInput={setToggleInput}
+          openInput={openInput}
+          child_comments_count={reply.length}
+        />,
+      );
+    }
+
+    return actionArr;
+  };
+
   return (
     <>
       <AntComment
-        className="team-comment"
-        author={<span className="comment-nickname">{user.username}</span>}
+        style={{ borderBottom: '1px solid #efefef' }}
+        actions={actions()}
+        author={<CommentNickname>{user.username}</CommentNickname>}
         content={
-          !isChange ? (
-            <div>
-              <p className="comment-content">{body}</p>
-            </div>
-          ) : (
-            <div className="pt-20">
-              <CommentInput
-                id={id}
-                parent_id={parent_id}
-                isChange={isChange}
-                value={body}
-              />
-            </div>
-          )
+          <div>
+            <CommentContent>{body}</CommentContent>
+          </div>
         }
         avatar={<Avatar src={user.image} alt={user.username} />}
         datetime={
@@ -55,7 +73,28 @@ const Comment = ({
             <span>{moment(created_at).fromNow()}</span>
           </Tooltip>
         }
-      ></AntComment>
+      >
+        {openInput && (
+          <div>
+            {reply.length ? (
+              <CommentList
+                list={reply}
+                handleSubmit={handleSubmit}
+                isLoggedIn={isLoggedIn}
+              />
+            ) : (
+              ''
+            )}
+            {isLoggedIn ? (
+              <div style={{ paddingTop: '20px!important' }}>
+                <CommentInput commentUpdate={commentSubmit} />
+              </div>
+            ) : (
+              ''
+            )}
+          </div>
+        )}
+      </AntComment>
     </>
   );
 };

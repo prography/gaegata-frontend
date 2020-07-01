@@ -5,7 +5,7 @@ import { IComment } from 'models/comment';
 export type CommentState = {
   getComments: {
     list: {
-      parent_comments: [];
+      parent_comments: IComment[];
     };
     status: string;
   };
