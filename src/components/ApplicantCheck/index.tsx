@@ -9,7 +9,7 @@ import {
 } from 'store/apply/action';
 
 interface Props {
-  team_id: object;
+  team_id: number;
 }
 
 const ApplicantCheck: React.FunctionComponent<Props> = ({ team_id }) => {

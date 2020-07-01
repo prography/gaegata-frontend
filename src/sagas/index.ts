@@ -3,6 +3,7 @@ import authSaga from './auth';
 import teamSaga from './team';
 import applyTeamSage from './apply';
 import myPageSaga from './mypage';
+import commentSaga from './comment';
 
 function* rootSaga() {
   yield all([
@@ -10,6 +11,7 @@ function* rootSaga() {
     fork(teamSaga),
     fork(applyTeamSage),
     fork(myPageSaga),
+    fork(commentSaga),
   ]);
 }
 
