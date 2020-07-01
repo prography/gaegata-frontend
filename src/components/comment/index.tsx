@@ -43,7 +43,7 @@ const Comment = ({
 
   const actions = () => {
     const actionArr = [];
-    if (reply.length > 0) {
+    if (reply.length > 0 || isLoggedIn) {
       actionArr.unshift(
         <CommentActions.ToggleBtn
           setToggleInput={setToggleInput}
