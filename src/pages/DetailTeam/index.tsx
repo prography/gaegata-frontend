@@ -21,10 +21,16 @@ import { reset } from 'store/auth/action';
 import ModalComponent from 'components/Modal/index';
 import ApplyTeam from 'components/ApplyTeam';
 import ApplicantCheck from 'components/ApplicantCheck';
+import CommentContainer from 'containers/CommentContainer';
 
-const DetailTeam: React.FC<RouteComponentProps> = ({ match }) => {
+interface MatchParams {
+  team_id: string;
+}
+
+const DetailTeam: React.FC<RouteComponentProps<MatchParams>> = ({ match }) => {
   const [visible, setVisible] = useState(false);
-  const team_id = match.params;
+  const team_id = parseInt(match.params.team_id);
+
   const dispatch = useDispatch();
 
   const team = useSelector((state: StoreState) => state.team.team);
@@ -104,6 +110,7 @@ const DetailTeam: React.FC<RouteComponentProps> = ({ match }) => {
             </TeamPeopleContent>
           </TeamPeopleWrap>
           <Hr />
+          <CommentContainer team_id={team_id} />
         </Container>
       </DetailTeamWrap>
 

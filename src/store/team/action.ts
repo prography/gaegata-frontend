@@ -12,7 +12,7 @@ export const createTeam = (params: FormData) => ({
 });
 
 export const detailTeamEntity = createEntity(DETAIL_TEAM, authApi.detailTeam);
-export const detailTeam = (params: string | {}) => ({
+export const detailTeam = (params: number) => ({
   type: DETAIL_TEAM,
   params,
 });

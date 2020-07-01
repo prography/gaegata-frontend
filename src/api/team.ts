@@ -35,7 +35,7 @@ export const createTeam = async (payload: FormData) => {
   return data;
 };
 
-export const detailTeam = async ({ team_id }: { team_id: string }) => {
+export const detailTeam = async (team_id: number) => {
   const token = getAuthToken();
   const headers = token
     ? {

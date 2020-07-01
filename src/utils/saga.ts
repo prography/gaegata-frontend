@@ -9,7 +9,6 @@ export const fetchEntity = ({
 }: EntitySchema) => {
   return function*(...args: any[]) {
     yield put(request());
-
     try {
       const response = yield call(api, ...args);
 
