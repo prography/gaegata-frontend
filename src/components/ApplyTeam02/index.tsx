@@ -1,52 +1,76 @@
-import React, { FormEvent, useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import {
   ApplyWrap,
   ApplyTitle,
-  FieldWrap,
-  NumberInput,
-  NumberInputWrap,
   ApplyButton,
   Hr,
   TextArea,
   ItemWrap,
 } from './styled';
 import { useDispatch } from 'react-redux';
+
 import { IQuestion } from 'models/question';
-import { applyTeam01 } from 'store/apply/action';
+import { applyTeam02 } from 'store/apply/action';
 
 interface Props {
-  question: IQuestion;
+  question2: IQuestion;
+  question3: IQuestion;
 }
 
-const ApplyTeam: React.FunctionComponent<Props> = ({ question }) => {
+const ApplyTeam02: React.FunctionComponent<Props> = ({
+  question2,
+  question3,
+}) => {
   const dispatch = useDispatch();
-  const [job, setJob] = useState('');
-  const [answer1, setAnswer1] = useState('');
 
-  const handleJob = (e: ChangeEvent<HTMLInputElement>) => {
-    setJob(e.target.value);
+  const [answer2, setAnswer2] = useState('');
+  const [answer3, setAnswer3] = useState('');
+
+  const handleAnswer2 = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setAnswer2(e.target.value);
   };
 
-  const handleQuestion1 = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setAnswer1(e.target.value);
+  const handleAnswer3 = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setAnswer3(e.target.value);
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const params = {
-      job,
-      answer1: {
-        question: question.id,
-        answer: answer1,
+      answer2: {
+        question: question2.id,
+        answer: answer2,
+      },
+
+      answer3: {
+        question: question3.id,
+        answer: answer3,
       },
     };
-    dispatch(applyTeam01(params));
+    dispatch(applyTeam02(params));
   };
 
   return (
     <ApplyWrap>
       <ApplyTitle>프로젝트 지원하기</ApplyTitle>
       <div>
+        <div style={{ display: 'inline-block' }}>
+          <div
+            style={{
+              borderRadius: '50%',
+              border: '1px solid #e1e2e3',
+
+              width: '40px',
+              height: '40px',
+              textAlign: 'center',
+              lineHeight: '40px',
+            }}
+          >
+            1
+          </div>
+          단계 1
+        </div>
+        <Hr />
         <div style={{ display: 'inline-block' }}>
           <div
             style={{
@@ -59,25 +83,9 @@ const ApplyTeam: React.FunctionComponent<Props> = ({ question }) => {
               color: '#fff',
             }}
           >
-            1
-          </div>
-          <span style={{ color: '#3562ff' }}>단계 1</span>
-        </div>
-        <Hr />
-        <div style={{ display: 'inline-block' }}>
-          <div
-            style={{
-              borderRadius: '50%',
-              border: '1px solid #e1e2e3',
-              width: '40px',
-              height: '40px',
-              textAlign: 'center',
-              lineHeight: '40px',
-            }}
-          >
             2
           </div>
-          단계 2
+          <span style={{ color: '#3562ff' }}>단계 2</span>
         </div>
         <Hr />
         <div style={{ display: 'inline-block' }}>
@@ -96,49 +104,30 @@ const ApplyTeam: React.FunctionComponent<Props> = ({ question }) => {
           단계 3
         </div>
       </div>
-      <FieldWrap>
-        <NumberInputWrap>
-          기획자{' '}
-          <NumberInput
-            onChange={handleJob}
-            id="planner"
-            type="radio"
-            value="Planner"
-            name="job"
-          ></NumberInput>{' '}
-        </NumberInputWrap>
-        <NumberInputWrap>
-          개발자{' '}
-          <NumberInput
-            onChange={handleJob}
-            id="developer"
-            type="radio"
-            value="Developer"
-            name="job"
-          ></NumberInput>{' '}
-        </NumberInputWrap>
-        <NumberInputWrap>
-          디자이너{' '}
-          <NumberInput
-            onChange={handleJob}
-            id="designer"
-            type="radio"
-            value="Designer"
-            name="job"
-          ></NumberInput>
-        </NumberInputWrap>
-      </FieldWrap>
       <ItemWrap>
         {
           <div style={{ textAlign: 'left' }}>
             <span style={{ color: 'red' }}>*</span>필수 질문)
-            {question.question}
+            {question2.question}
           </div>
         }
         <TextArea
-          id="question1"
+          id="answer2"
           placeholder="질문에 성실히 답해주세요."
-          onChange={handleQuestion1}
+          onChange={handleAnswer2}
+        ></TextArea>
+      </ItemWrap>
+      <ItemWrap>
+        {
+          <div style={{ textAlign: 'left' }}>
+            <span style={{ color: 'red' }}>*</span>필수 질문)
+            {question3.question}
+          </div>
+        }
+        <TextArea
+          id="answer3"
+          placeholder="질문에 성실히 답해주세요."
+          onChange={handleAnswer3}
         ></TextArea>
       </ItemWrap>
       <ApplyButton onClick={handleSubmit}>다음</ApplyButton>
@@ -146,4 +135,4 @@ const ApplyTeam: React.FunctionComponent<Props> = ({ question }) => {
   );
 };
 
-export default ApplyTeam;
+export default ApplyTeam02;

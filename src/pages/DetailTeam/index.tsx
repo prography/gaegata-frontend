@@ -19,9 +19,9 @@ import {
 import { RouteComponentProps } from 'react-router-dom';
 import { reset } from 'store/auth/action';
 import ModalComponent from 'components/Modal/index';
-import ApplyTeam from 'components/ApplyTeam';
 import ApplicantCheck from 'components/ApplicantCheck';
 import CommentContainer from 'containers/CommentContainer';
+import ApplyContainer from 'containers/ApplyContainer';
 
 interface MatchParams {
   team_id: string;
@@ -35,9 +35,6 @@ const DetailTeam: React.FC<RouteComponentProps<MatchParams>> = ({ match }) => {
 
   const team = useSelector((state: StoreState) => state.team.team);
   const { username } = useSelector((state: StoreState) => state.auth.me);
-  const { applyStatus } = useSelector(
-    (state: StoreState) => state.applyTeam.applyTeam,
-  );
 
   const {
     title,
@@ -55,7 +52,7 @@ const DetailTeam: React.FC<RouteComponentProps<MatchParams>> = ({ match }) => {
 
   useEffect(() => {
     getData();
-  }, [applyStatus]);
+  }, []);
 
   const handleVisible = (): void => {
     setVisible(true);
@@ -115,13 +112,11 @@ const DetailTeam: React.FC<RouteComponentProps<MatchParams>> = ({ match }) => {
       </DetailTeamWrap>
 
       {visible && username !== author.username ? (
-        <ModalComponent
+        <ApplyContainer
+          team_id={team_id}
           handleCancel={handleCancel}
           visible={visible}
-          width={600}
-        >
-          <ApplyTeam handleCancel={handleCancel}></ApplyTeam>
-        </ModalComponent>
+        />
       ) : (
         <ModalComponent
           handleCancel={handleCancel}

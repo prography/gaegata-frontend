@@ -51,7 +51,8 @@ export const Hr = styled.hr`
 `;
 
 export const ItemWrap = styled.div`
-  margin: 5% 0;
+  margin: 10% 0;
+  display: block;
 `;
 
 export const TextArea = styled.textarea`

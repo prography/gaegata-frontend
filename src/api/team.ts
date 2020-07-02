@@ -29,7 +29,7 @@ export const createTeam = async (payload: FormData) => {
     : {};
 
   const { data } = await fetcher.post('/teams/board/', payload, {
-    headers: headers,
+    headers,
   });
 
   return data;
@@ -44,12 +44,27 @@ export const detailTeam = async (team_id: number) => {
       }
     : {};
   const { data } = await fetcher.get(`/teams/board/${team_id}/`, {
-    headers: headers,
+    headers,
   });
   return data;
 };
 
 export const listTeam = async () => {
   const { data } = await fetcher.get('/teams/board/');
+  return data;
+};
+
+export const listQuestion = async (team_id: number) => {
+  const token = getAuthToken();
+  const headers = token
+    ? {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      }
+    : {};
+  const { data } = await fetcher.get(`/teams/board/${team_id}/questions/`, {
+    headers,
+  });
+
   return data;
 };

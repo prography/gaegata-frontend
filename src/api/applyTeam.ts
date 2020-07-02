@@ -1,16 +1,15 @@
 import fetcher from '../utils/fetcher';
 import { getAuthToken } from 'utils/auth';
+import { IAnswer } from 'models/apply';
 
-export interface ApplyTeamParams {
-  apply_id: number;
-  team_id: number;
-  job: string;
-  name: string;
-  email: string;
-  applyStatus?: string;
+export interface IApplyParams {
+  team: {
+    job: string;
+  };
+  answers: IAnswer[];
 }
 
-export const postApplyTeam = async (payload: ApplyTeamParams) => {
+export const postApplyTeam = async (payload: IApplyParams, team_id: number) => {
   const token = getAuthToken();
   const headers = token
     ? {
@@ -19,10 +18,10 @@ export const postApplyTeam = async (payload: ApplyTeamParams) => {
       }
     : {};
   const { data } = await fetcher.post(
-    `teams/board/${payload.team_id}/applications/`,
+    `teams/board/${team_id}/applications/`,
     payload,
     {
-      headers: headers,
+      headers,
     },
   );
   return data;
