@@ -27,7 +27,6 @@ export const NavLogo = styled.div`
   font-size: 2rem;
   font-weight: 800;
   color: #5b5c5f;
-  margin-top: 10px;
 `;
 
 export const NavUser = styled.div`

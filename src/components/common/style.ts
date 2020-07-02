@@ -12,13 +12,11 @@ interface InputPropsType {
 export const ItemWrap = styled.div`
   padding-bottom: 12px;
   color: #767676;
-  text-align: left;
-  display: flex;
+  display: block;
   justify-content: center;
 `;
 
 export const LoginButton = styled.button<ButtonPropsType>`
-  display: flex;
   justify-content: center;
   align-items: center;
   width: 50%;

@@ -80,7 +80,7 @@ const Login: React.FunctionComponent = () => {
       </LoginContent>
       {status === 'login' ? (
         <>
-          <ItemWrap>
+          <ItemWrap style={{ display: 'block' }}>
             <LoginInput
               type="password"
               name="password"
@@ -90,7 +90,7 @@ const Login: React.FunctionComponent = () => {
               autoFocus={true}
               onKeyPress={enterPasswordCheck}
             />
-            <div style={{ textAlign: 'left', color: 'red', fontSize: '12px' }}>
+            <div style={{ color: 'red', fontSize: '12px' }}>
               {passwordError}
             </div>
           </ItemWrap>
@@ -122,9 +122,7 @@ const Login: React.FunctionComponent = () => {
               onKeyPress={enterEmailCheck}
               autoFocus={true}
             />
-            <div style={{ textAlign: 'left', color: 'red', fontSize: '12px' }}>
-              {emailError}
-            </div>
+            <div style={{ color: 'red', fontSize: '12px' }}>{emailError}</div>
           </ItemWrap>
           <ItemWrap>
             <LoginButton

@@ -33,9 +33,9 @@ const PageLayout: React.FC = ({ children }) => {
           지금바로 FIT이 맞는 사람들을 찾아보세요!
         </div>
         <div style={{ display: 'flex' }}>
-          <CreateButton>
-            <Link to="/team/create">팀원 찾기</Link>
-          </CreateButton>
+          <Link to="/team/create">
+            <CreateButton>팀원 찾기</CreateButton>
+          </Link>
         </div>
       </div>
       <PageTitle>팀 리스트</PageTitle>

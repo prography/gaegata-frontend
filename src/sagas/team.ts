@@ -16,18 +16,24 @@ const fetchCreateTeam = fetchEntity(createTeamEntity);
 const fetchDetailTeam = fetchEntity(detailTeamEntity);
 const fetchListTeam = fetchEntity(listTeamEntity);
 function* watchCreateTeam() {
-  const { params }: CreateTeam = yield take(CREAT_TEAM);
-  yield call(fetchCreateTeam, params);
+  while (true) {
+    const { params }: CreateTeam = yield take(CREAT_TEAM);
+    yield call(fetchCreateTeam, params);
+  }
 }
 
 function* watchDetailTeam() {
-  const { params }: DetailTeam = yield take(DETAIL_TEAM);
-  yield call(fetchDetailTeam, params);
+  while (true) {
+    const { params }: DetailTeam = yield take(DETAIL_TEAM);
+    yield call(fetchDetailTeam, params);
+  }
 }
 
 function* watchListTeam() {
-  const { params }: ListTeam = yield take(LIST_TEAM);
-  yield call(fetchListTeam, params);
+  while (true) {
+    const { params }: ListTeam = yield take(LIST_TEAM);
+    yield call(fetchListTeam, params);
+  }
 }
 
 export default function* root() {

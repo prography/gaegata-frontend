@@ -98,9 +98,7 @@ const Register = () => {
           onChange={onChangeNickname}
           error={usernameError}
         />
-        <div style={{ textAlign: 'left', color: 'red', fontSize: '12px' }}>
-          {usernameError}
-        </div>
+        <div style={{ color: 'red', fontSize: '12px' }}>{usernameError}</div>
       </ItemWrap>
       <ItemWrap>
         <LoginInput
@@ -111,9 +109,7 @@ const Register = () => {
           onChange={onChangePassword}
           error={passwordError}
         />
-        <div style={{ textAlign: 'left', color: 'red', fontSize: '12px' }}>
-          {passwordError}
-        </div>
+        <div style={{ color: 'red', fontSize: '12px' }}>{passwordError}</div>
       </ItemWrap>
       <ItemWrap>
         <LoginInput
@@ -124,7 +120,7 @@ const Register = () => {
           onChange={onChangePasswordRepeat}
           error={passwordRepeatError}
         />
-        <div style={{ textAlign: 'left', color: 'red', fontSize: '12px' }}>
+        <div style={{ color: 'red', fontSize: '12px' }}>
           {passwordRepeatError}
         </div>
       </ItemWrap>

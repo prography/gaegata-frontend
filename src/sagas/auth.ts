@@ -31,8 +31,10 @@ function* watchLogin() {
 }
 
 function* watchEmailCheck() {
-  const { params }: EmailCheck = yield take(EMAIL_CHECK);
-  yield call(fetchEmail, params);
+  while (true) {
+    const { params }: EmailCheck = yield take(EMAIL_CHECK);
+    yield call(fetchEmail, params);
+  }
 }
 
 function* watchMe() {

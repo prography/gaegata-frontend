@@ -31,7 +31,7 @@ body {
 
 .ant-modal-body {
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 
 .ant-avatar {
