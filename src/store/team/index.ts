@@ -2,11 +2,14 @@ import { produce } from 'immer';
 import { combineReducers } from 'redux';
 import { Team } from 'models/team';
 import { IQuestion } from 'models/question';
+import { User } from 'models/user';
 
 export type TeamState = {
   team: Team & {
     status: string;
     application: boolean;
+    leader: User;
+    authorCheck: boolean;
   };
   teamList: {
     list: {
@@ -27,7 +30,7 @@ const initialState: TeamState = {
   team: {
     id: -1,
     title: '',
-    author: { id: -1, username: '' },
+    author: '',
     description: '',
     planner: 0,
     developer: 0,
@@ -38,6 +41,12 @@ const initialState: TeamState = {
     image: '',
     created_at: '',
     application: false,
+    authorCheck: false,
+    leader: {
+      id: -1,
+      image: '',
+      username: '',
+    },
   },
   teamList: {
     list: {

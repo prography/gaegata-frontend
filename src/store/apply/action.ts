@@ -20,16 +20,16 @@ export const applicantsEntity = createEntity(
   APPLICANT_LIST,
   applyApi.getApplicantList,
 );
-export const applicants = (params: string | {}) => ({
+export const applicants = (team_id: number) => ({
   type: APPLICANT_LIST,
-  params,
+  team_id,
 });
 
 export const approveApplicantEntity = createEntity(
   APPROVE_APPLICANT,
   applyApi.getApproveApplicant,
 );
-export const approveApplicant = (params: number | {}) => ({
+export const approveApplicant = (params: number) => ({
   type: APPROVE_APPLICANT,
   params,
 });
@@ -38,7 +38,7 @@ export const refuseApplicantEntity = createEntity(
   REFUSE_APPLICANT,
   applyApi.getRefuseApplicant,
 );
-export const refuseApplicant = (params: number | {}) => ({
+export const refuseApplicant = (params: number) => ({
   type: REFUSE_APPLICANT,
   params,
 });

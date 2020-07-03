@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Team } from 'models/team';
 import { Avatar } from 'antd';
+import { User } from 'models/user';
 
 /* 팀 카드 컴포넌트 */
 const Card = styled.div`
@@ -97,7 +97,15 @@ const ImageWrap = styled.div`
   }
 `;
 
-const PostCard: React.FC<Team> = ({
+interface PostCardProps {
+  id: number;
+  author: User;
+  image: string;
+  region: string;
+  title: string;
+  description: string;
+}
+const PostCard: React.FC<PostCardProps> = ({
   id,
   author,
   image,

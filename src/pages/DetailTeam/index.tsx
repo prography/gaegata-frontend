@@ -73,7 +73,7 @@ const DetailTeam: React.FC<RouteComponentProps<MatchParams>> = ({ match }) => {
             모집 인원(기획자 : {planner}명, 개발자 : {developer}명, 디자이너 :{' '}
             {designer}명)
           </SubTitle>
-          {username !== author.username ? (
+          {username !== author ? (
             application ? (
               <CreateButton>신청취소</CreateButton>
             ) : (
@@ -111,7 +111,7 @@ const DetailTeam: React.FC<RouteComponentProps<MatchParams>> = ({ match }) => {
         </Container>
       </DetailTeamWrap>
 
-      {visible && username !== author.username ? (
+      {visible && username !== author ? (
         <ApplyContainer
           team_id={team_id}
           handleCancel={handleCancel}

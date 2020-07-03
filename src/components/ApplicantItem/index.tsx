@@ -24,6 +24,10 @@ const ApplicantItem = ({
   const { username, image } = applicant;
   const [show, setShow] = useState(false);
 
+  const jobName = new Map();
+  jobName.set('Developer', '개발자');
+  jobName.set('Designer', '디자이너');
+  jobName.set('Planner', '기획자');
   const handleShow = () => {
     setShow(!show);
   };
@@ -43,7 +47,18 @@ const ApplicantItem = ({
           <ApplicantImage>
             <img src={image} style={{ borderRadius: '100%', height: '100%' }} />
           </ApplicantImage>
-          <ApplicantName>{username}</ApplicantName>
+          <div>
+            <ApplicantName>{username}</ApplicantName>
+            <span
+              style={{
+                fontSize: '1rem',
+                color: '#BDBDBD',
+                display: 'inline-block',
+              }}
+            >
+              {jobName.get(job)}
+            </span>
+          </div>
         </div>
         {join_status == 'Waiting' ? (
           <>
@@ -63,7 +78,7 @@ const ApplicantItem = ({
         </div>
       </ApplicantItemWrap>
       <ApplicantContent show={show}>
-        직무 : {job} <br />
+        직무 : {jobName.get(job)} <br />
         신청일 : {created_at}
       </ApplicantContent>
     </ApplicantItemContainer>

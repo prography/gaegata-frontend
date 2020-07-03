@@ -3,7 +3,7 @@ import { User } from './user';
 export interface Team {
   id: number;
   title: string;
-  author: User;
+  author: string;
   description: string;
   planner?: number;
   developer?: number;
