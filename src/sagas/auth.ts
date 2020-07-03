@@ -21,13 +21,17 @@ const fetchEmail = fetchEntity(emailCheckEntity);
 const fetchMe = fetchEntity(meEntity);
 
 function* watchRegister() {
-  const { params }: Register = yield take(REGISTER);
-  yield call(fetchRegister, params);
+  while (true) {
+    const { params }: Register = yield take(REGISTER);
+    yield call(fetchRegister, params);
+  }
 }
 
 function* watchLogin() {
-  const { params }: Login = yield take(LOGIN);
-  yield call(fetchLogin, params);
+  while (true) {
+    const { params }: Login = yield take(LOGIN);
+    yield call(fetchLogin, params);
+  }
 }
 
 function* watchEmailCheck() {
@@ -38,8 +42,10 @@ function* watchEmailCheck() {
 }
 
 function* watchMe() {
-  const { token }: Me = yield take(ME);
-  yield call(fetchMe, token);
+  while (true) {
+    const { token }: Me = yield take(ME);
+    yield call(fetchMe, token);
+  }
 }
 
 export default function* root() {
