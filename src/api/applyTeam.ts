@@ -27,15 +27,7 @@ export const postApplyTeam = async (payload: IApplyParams, team_id: number) => {
   return data;
 };
 
-export interface ApplicantParams {
-  team_id: string;
-}
-
-export const getApplicantList = async ({
-  team_id,
-}: {
-  team_id: ApplicantParams;
-}) => {
+export const getApplicantList = async (team_id: number) => {
   const token = getAuthToken();
   const headers = token
     ? {

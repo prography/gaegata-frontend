@@ -9,6 +9,7 @@ export const ApplicantItemContainer = styled.div`
   flex-direction: column;
   background-color: #f7f8fb;
   margin: 3% 0;
+  border-radius: 10px;
 `;
 
 export const ApplicantItemWrap = styled.div`
@@ -20,7 +21,8 @@ export const ApplicantItemWrap = styled.div`
 
 export const ApplicantName = styled.span`
   font-size: 1.25rem;
-  margin: 5% 5%;
+  margin: 5% 1%;
+  display: inline-block;
 `;
 
 export const ApplicantImage = styled.div`
@@ -28,7 +30,6 @@ export const ApplicantImage = styled.div`
   height: 62px;
   background-color: #fff;
   border-radius: 100%;
-  border: 1px solid black;
   display: inline-block;
 `;
 

@@ -20,23 +20,31 @@ const fetchAproveApplicant = fetchEntity(approveApplicantEntity);
 const fetchRefuseApplicant = fetchEntity(refuseApplicantEntity);
 
 function* watchApplyTeam() {
-  const { params, team_id }: ApplyTeam = yield take(APPLY_TEAM);
-  yield call(fetchApplyTeam, params, team_id);
+  while (true) {
+    const { params, team_id }: ApplyTeam = yield take(APPLY_TEAM);
+    yield call(fetchApplyTeam, params, team_id);
+  }
 }
 
 function* watchApplicantList() {
-  const { params }: Applicants = yield take(APPLICANT_LIST);
-  yield call(fetchApplicantList, params);
+  while (true) {
+    const { team_id }: Applicants = yield take(APPLICANT_LIST);
+    yield call(fetchApplicantList, team_id);
+  }
 }
 
 function* watchAproveApplicant() {
-  const { params }: Applicants = yield take(APPROVE_APPLICANT);
-  yield call(fetchAproveApplicant, params);
+  while (true) {
+    const { team_id }: Applicants = yield take(APPROVE_APPLICANT);
+    yield call(fetchAproveApplicant, team_id);
+  }
 }
 
 function* watchRefuseApplicant() {
-  const { params }: RefuseApplicant = yield take(REFUSE_APPLICANT);
-  yield call(fetchRefuseApplicant, params);
+  while (true) {
+    const { params }: RefuseApplicant = yield take(REFUSE_APPLICANT);
+    yield call(fetchRefuseApplicant, params);
+  }
 }
 
 export default function* root() {
