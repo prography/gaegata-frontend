@@ -21,17 +21,39 @@ interface Props {
 const ApplyTeam: React.FunctionComponent<Props> = ({ question }) => {
   const dispatch = useDispatch();
   const [job, setJob] = useState('');
+  const [jobError, setJobError] = useState('');
+
   const [answer1, setAnswer1] = useState('');
+  const [answer1Error, setAnswer1Error] = useState('');
 
   const handleJob = (e: ChangeEvent<HTMLInputElement>) => {
     setJob(e.target.value);
+    setJobError('');
   };
 
   const handleQuestion1 = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setAnswer1(e.target.value);
+    setAnswer1Error('');
+  };
+
+  const validation = (): boolean => {
+    if (job == '') {
+      setJobError('원하는 직무를 선택해주세요.');
+      return false;
+    }
+    if (answer1.length > 100 || answer1 == '') {
+      setAnswer1Error('질문에 성실히 답해주세요.');
+      return false;
+    }
+
+    return true;
   };
 
   const handleSubmit = async (e: FormEvent) => {
+    if (!validation()) {
+      return;
+    }
+
     e.preventDefault();
     const params = {
       job,
@@ -128,6 +150,7 @@ const ApplyTeam: React.FunctionComponent<Props> = ({ question }) => {
           ></NumberInput>
         </NumberInputWrap>
       </FieldWrap>
+      <div style={{ color: 'red', fontSize: '12px' }}>{jobError}</div>
       <ItemWrap>
         {
           <div style={{ textAlign: 'left' }}>
@@ -139,7 +162,11 @@ const ApplyTeam: React.FunctionComponent<Props> = ({ question }) => {
           id="question1"
           placeholder="질문에 성실히 답해주세요."
           onChange={handleQuestion1}
+          error={answer1Error}
         ></TextArea>
+        <div style={{ color: 'red', fontSize: '12px', textAlign: 'left' }}>
+          {answer1Error}
+        </div>
       </ItemWrap>
       <ApplyButton onClick={handleSubmit}>다음</ApplyButton>
     </ApplyWrap>

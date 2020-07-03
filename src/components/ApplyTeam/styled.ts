@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface InputPropsType {
+  error?: String;
+}
+
 export const ApplyWrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -54,16 +58,16 @@ export const ItemWrap = styled.div`
   margin: 5% 0;
 `;
 
-export const TextArea = styled.textarea`
+export const TextArea = styled.textarea<InputPropsType>`
   display: block;
   width: 100%;
   height: 150px;
   padding: 15px;
   border-radius: 5px;
-  border: 1px solid #e1e2e3;
+  border: 1px solid #f7f8fb;
   font-size: 15px;
   color: #333;
   background-color: #f7f8fb;
-  border: 0px solid;
   margin: 10px 0;
+  border-color: ${(props: InputPropsType) => (props.error ? 'red' : '')};
 `;
