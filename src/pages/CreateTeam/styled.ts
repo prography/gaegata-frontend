@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface InputPropsType {
+  error?: String;
+}
+
 export const CreateTeamWrap = styled.div`
   padding: 60px 1.375rem 0;
   flex-direction: column;
@@ -31,55 +35,49 @@ export const Title = styled.h1`
   font-weight: 800;
 `;
 
-export const Hr = styled.hr`
-  width: 100%;
-  margin-bottom: 3%;
-  border: 1px solid #efefef;
-`;
-
-export const Input = styled.input`
+export const Input = styled.input<InputPropsType>`
   width: 100%;
   height: 40px;
   padding-right: 15px;
   padding-left: 15px;
   border-radius: 5px;
-  border: 1px solid #e1e2e3;
+  border: 1px solid #f7f8fb;
   font-size: 15px;
   color: #333;
   background-color: #f7f8fb;
-  border: 0px solid;
   margin: 10px 0;
+  border-color: ${(props: InputPropsType) => (props.error ? 'red' : '')};
 `;
 
 export const NumberInputWrap = styled.div`
   width: 80%;
 `;
 
-export const NumberInput = styled.input`
+export const NumberInput = styled.input<InputPropsType>`
   width: 90%;
   height: 40px;
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid #e1e2e3;
+  border: 1px solid #f7f8fb;
   font-size: 15px;
   color: #333;
   background-color: #f7f8fb;
-  border: 0px solid;
   margin: 10px 0;
+  border-color: ${(props: InputPropsType) => (props.error ? 'red' : '')};
 `;
 
-export const TextArea = styled.textarea`
+export const TextArea = styled.textarea<InputPropsType>`
   display: block;
   width: 100%;
   height: 150px;
   padding: 15px;
   border-radius: 5px;
-  border: 1px solid #e1e2e3;
+  border: 1px solid #f7f8fb;
   font-size: 15px;
   color: #333;
   background-color: #f7f8fb;
-  border: 0px solid;
   margin: 10px 0;
+  border-color: ${(props: InputPropsType) => (props.error ? 'red' : '')};
 `;
 
 export const FieldWrap = styled.div`
@@ -94,11 +92,10 @@ export const SelectArea = styled.select`
   padding-right: 15px;
   padding-left: 15px;
   border-radius: 5px;
-  border: 1px solid #e1e2e3;
+  border: 1px solid #f7f8fb;
   font-size: 15px;
   color: #333;
   background-color: #f7f8fb;
-  border: 0px solid;
   margin: 10px 0;
 `;
 

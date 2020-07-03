@@ -4,7 +4,6 @@ import {
   CreateTeamWrap,
   Title,
   Input,
-  Hr,
   Container,
   SubTitle,
   FieldWrap,
@@ -34,9 +33,9 @@ const CreateTeam: React.FC = () => {
   const [teamContent, setTeamContent] = useState<TeamParams>({
     title: '',
     description: '',
-    planner: 0,
-    developer: 0,
-    designer: 0,
+    planner: -1,
+    developer: -1,
+    designer: -1,
     region: '서울특별시',
     goal: '',
   });
@@ -44,6 +43,15 @@ const CreateTeam: React.FC = () => {
   const [question1, setQuestion1] = useState('');
   const [question2, setQuestion2] = useState('');
   const [question3, setQuestion3] = useState('');
+
+  const [titleError, setTitleError] = useState('');
+  const [descriptionError, setDescriptionError] = useState('');
+  const [plannerError, setPlannerError] = useState('');
+  const [developerError, setDeveloperError] = useState('');
+  const [designerError, setDesignerError] = useState('');
+  const [question1Error, setQuestion1Error] = useState('');
+  const [question2Error, setQuestion2Error] = useState('');
+  const [question3Error, setQuestion3Error] = useState('');
 
   const [previewVisible, setPreviewvisible] = useState(false);
   const [previewImage, setPreviewimage] = useState('');
@@ -63,18 +71,69 @@ const CreateTeam: React.FC = () => {
       ...teamContent,
       [e.currentTarget.id]: e.currentTarget.value,
     });
+    if (e.currentTarget.id == 'title') {
+      setTitleError('');
+    } else if (e.currentTarget.id == 'description') {
+      setDescriptionError('');
+    } else if (e.currentTarget.id == 'planner') {
+      setPlannerError('');
+    } else if (e.currentTarget.id == 'developer') {
+      setDeveloperError('');
+    } else if (e.currentTarget.id == 'designer') {
+      setDesignerError('');
+    }
   };
 
   const handleQuestion1 = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setQuestion1(e.target.value);
+    setQuestion1Error('');
   };
 
   const handleQuestion2 = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setQuestion2(e.target.value);
+    setQuestion2Error('');
   };
 
   const handleQuestion3 = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setQuestion3(e.target.value);
+    setQuestion3Error('');
+  };
+
+  const validate = (): boolean => {
+    if (teamContent.title.length > 50 || teamContent.title == '') {
+      setTitleError('팀 제목을 입력해주세요.');
+      return false;
+    }
+    if (teamContent.description.length > 100 || teamContent.description == '') {
+      setDescriptionError('팀을 소개하는 글을 입력해주세요.');
+      return false;
+    }
+    if (teamContent.planner > 10 || teamContent.planner < 0) {
+      setPlannerError('몇명의 기획자가 필요하신가요?');
+      return false;
+    }
+    if (teamContent.developer > 10 || teamContent.developer < 0) {
+      setDeveloperError('몇명의 개발자가 필요하신가요?');
+      return false;
+    }
+    if (teamContent.designer > 10 || teamContent.designer < 0) {
+      setDesignerError('몇명의 디자이너가 필요하신가요?');
+      return false;
+    }
+    if (question1.length > 50 || question1 == '') {
+      setQuestion1Error('팀원들에게 물어보고 싶은 질문을 입력해주세요.');
+      return false;
+    }
+    if (question2.length > 50 || question2 == '') {
+      setQuestion2Error('팀원들에게 물어보고 싶은 질문을 입력해주세요.');
+      return false;
+    }
+    if (question3.length > 50 || question3 == '') {
+      setQuestion3Error('팀원들에게 물어보고 싶은 질문을 입력해주세요.');
+      return false;
+    }
+
+    return true;
   };
 
   useEffect(() => {
@@ -111,6 +170,11 @@ const CreateTeam: React.FC = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (!validate()) {
+      return;
+    }
+
     const questionArr = [];
 
     if (question1) {
@@ -171,12 +235,18 @@ const CreateTeam: React.FC = () => {
                 type="text"
                 placeholder="팀 제목을 입력해주세요."
                 onChange={handleChange}
+                error={titleError}
               ></Input>
+              <div style={{ color: 'red', fontSize: '12px' }}>{titleError}</div>
               <TextArea
                 id="description"
                 placeholder="팀을 소개하는 글을 입력해주세요."
                 onChange={handleChange}
+                error={descriptionError}
               ></TextArea>
+              <div style={{ color: 'red', fontSize: '12px' }}>
+                {descriptionError}
+              </div>
               <SelectArea id="region" onChange={handleChange}>
                 <option value="서울특별시">서울특별시</option>
                 <option value="부산광역시">부산광역시</option>
@@ -195,8 +265,12 @@ const CreateTeam: React.FC = () => {
                     min="0"
                     max="10"
                     onChange={handleChange}
-                    placeholder="몇명의 디자이너가 필요하신가요?"
-                  ></NumberInput>{' '}
+                    placeholder="몇명의 기획자가 필요하신가요?"
+                    error={plannerError}
+                  ></NumberInput>
+                  <div style={{ color: 'red', fontSize: '12px' }}>
+                    {plannerError}
+                  </div>
                 </NumberInputWrap>
                 <NumberInputWrap>
                   <NumberInput
@@ -205,8 +279,12 @@ const CreateTeam: React.FC = () => {
                     min="0"
                     max="10"
                     onChange={handleChange}
-                    placeholder="몇명의 기획자가 필요하신가요?"
-                  ></NumberInput>{' '}
+                    placeholder="몇명의 개발자가 필요하신가요?"
+                    error={developerError}
+                  ></NumberInput>
+                  <div style={{ color: 'red', fontSize: '12px' }}>
+                    {developerError}
+                  </div>
                 </NumberInputWrap>
                 <NumberInputWrap>
                   <NumberInput
@@ -215,8 +293,12 @@ const CreateTeam: React.FC = () => {
                     min="0"
                     max="10"
                     onChange={handleChange}
-                    placeholder="몇명의 개발자가 필요하신가요?"
+                    placeholder="몇명의 디자이너가 필요하신가요?"
+                    error={designerError}
                   ></NumberInput>
+                  <div style={{ color: 'red', fontSize: '12px' }}>
+                    {designerError}
+                  </div>
                 </NumberInputWrap>
               </FieldWrap>
             </ItemWrap>
@@ -250,19 +332,31 @@ const CreateTeam: React.FC = () => {
                 id="question1"
                 placeholder="팀원들에게 물어보고 싶은 질문을 입력해주세요."
                 onChange={handleQuestion1}
+                error={question1Error}
               ></TextArea>
+              <div style={{ color: 'red', fontSize: '12px' }}>
+                {question1Error}
+              </div>
               <SubTitle>두번째 질문</SubTitle>
               <TextArea
                 id="question2"
                 placeholder="팀원들에게 물어보고 싶은 질문을 입력해주세요."
                 onChange={handleQuestion2}
+                error={question2Error}
               ></TextArea>
+              <div style={{ color: 'red', fontSize: '12px' }}>
+                {question2Error}
+              </div>
               <SubTitle>세번째 질문</SubTitle>
               <TextArea
                 id="question3"
                 placeholder="팀원들에게 물어보고 싶은 질문을 입력해주세요."
                 onChange={handleQuestion3}
+                error={question3Error}
               ></TextArea>
+              <div style={{ color: 'red', fontSize: '12px' }}>
+                {question3Error}
+              </div>
             </ItemWrap>
             <CreateButton type="submit">제출</CreateButton>
           </Form>

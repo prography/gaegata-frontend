@@ -3,7 +3,6 @@ import { LoginWrap, LoginTitle, LoginContent } from './style';
 import { LoginButton, LoginInput, ItemWrap } from '../Common/style';
 import { useDispatch, useSelector } from 'react-redux';
 import { LoginParams } from 'api/auth';
-import { MailOutlined } from '@ant-design/icons';
 import 'styles/login.css';
 import { login, emailCheck } from 'store/auth/action';
 

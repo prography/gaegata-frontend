@@ -24,17 +24,39 @@ const ApplyTeam02: React.FunctionComponent<Props> = ({
   const dispatch = useDispatch();
 
   const [answer2, setAnswer2] = useState('');
+  const [answer2Error, setAnswer2Error] = useState('');
+
   const [answer3, setAnswer3] = useState('');
+  const [answer3Error, setAnswer3Error] = useState('');
 
   const handleAnswer2 = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setAnswer2(e.target.value);
+    setAnswer2Error('');
   };
 
   const handleAnswer3 = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setAnswer3(e.target.value);
+    setAnswer3Error('');
+  };
+
+  const validation = (): boolean => {
+    if (answer2.length > 100 || answer2 == '') {
+      setAnswer2Error('질문에 성실히 답해주세요.');
+      return false;
+    }
+    if (answer3.length > 100 || answer3 == '') {
+      setAnswer3Error('질문에 성실히 답해주세요.');
+      return false;
+    }
+
+    return true;
   };
 
   const handleSubmit = async (e: FormEvent) => {
+    if (!validation()) {
+      return;
+    }
+
     e.preventDefault();
     const params = {
       answer2: {
@@ -116,6 +138,9 @@ const ApplyTeam02: React.FunctionComponent<Props> = ({
           placeholder="질문에 성실히 답해주세요."
           onChange={handleAnswer2}
         ></TextArea>
+        <div style={{ color: 'red', fontSize: '12px', textAlign: 'left' }}>
+          {answer2Error}
+        </div>
       </ItemWrap>
       <ItemWrap>
         {
@@ -129,6 +154,9 @@ const ApplyTeam02: React.FunctionComponent<Props> = ({
           placeholder="질문에 성실히 답해주세요."
           onChange={handleAnswer3}
         ></TextArea>
+        <div style={{ color: 'red', fontSize: '12px', textAlign: 'left' }}>
+          {answer3Error}
+        </div>
       </ItemWrap>
       <ApplyButton onClick={handleSubmit}>다음</ApplyButton>
     </ApplyWrap>
