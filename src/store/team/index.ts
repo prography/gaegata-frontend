@@ -1,6 +1,7 @@
 import { produce } from 'immer';
 import { combineReducers } from 'redux';
 import { Team } from 'models/team';
+import { IQuestion } from 'models/question';
 
 export type TeamState = {
   team: Team & {
@@ -14,6 +15,10 @@ export type TeamState = {
       previous: null;
       results: [];
     };
+    status: string;
+  };
+  questionList: {
+    list: IQuestion[];
     status: string;
   };
 };
@@ -42,6 +47,10 @@ const initialState: TeamState = {
       results: [],
     },
     status: '',
+  },
+  questionList: {
+    list: [],
+    status: 'INIT',
   },
 };
 
@@ -94,7 +103,31 @@ const teamListReducer = (
         };
         draft.status = 'LIST_TEAM_SUCCESS';
         return draft;
-      case 'LIST_TEAM_FAILURE':
+      case 'LIST_TEAM_FAILTURE':
+        return draft;
+      default:
+        return draft;
+    }
+  });
+};
+
+const questionListReducer = (
+  state = initialState.questionList,
+  action: any,
+): TeamState['questionList'] => {
+  return produce(state, draft => {
+    switch (action.type) {
+      case 'LIST_QUESTION_REQUEST':
+        draft.status = 'FETCHING';
+        return draft;
+      case 'LIST_QUESTION_SUCCESS':
+        draft.status = 'SUCCESS';
+        draft.list = {
+          ...action.payload,
+        };
+        return draft;
+      case 'LIST_QUESTION_FAILTURE':
+        draft.status = 'FAILTURE';
         return draft;
       default:
         return draft;
@@ -105,4 +138,5 @@ const teamListReducer = (
 export default combineReducers({
   team: teamReducer,
   teamList: teamListReducer,
+  questionList: questionListReducer,
 });

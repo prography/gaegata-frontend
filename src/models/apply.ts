@@ -1,10 +1,13 @@
-export interface Apply {
-  id: number;
-  team: string;
+export interface IApply {
   job: string;
-  job_status: string;
-  name: string;
-  email: string;
+  answer1: IAnswer;
+  answer2: IAnswer;
+  answer3: IAnswer;
+}
+
+export interface IAnswer {
+  question: number;
+  answer: string;
 }
 
 export interface Applicants {

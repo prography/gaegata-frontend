@@ -20,8 +20,8 @@ const fetchAproveApplicant = fetchEntity(approveApplicantEntity);
 const fetchRefuseApplicant = fetchEntity(refuseApplicantEntity);
 
 function* watchApplyTeam() {
-  const { params }: ApplyTeam = yield take(APPLY_TEAM);
-  yield call(fetchApplyTeam, params);
+  const { params, team_id }: ApplyTeam = yield take(APPLY_TEAM);
+  yield call(fetchApplyTeam, params, team_id);
 }
 
 function* watchApplicantList() {

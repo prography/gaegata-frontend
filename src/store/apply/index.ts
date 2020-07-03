@@ -1,9 +1,11 @@
 import { produce } from 'immer';
 import { combineReducers } from 'redux';
+import { IApply } from 'models/apply';
 
 export type ApplyTeamState = {
-  applyTeam: {
-    applyStatus: string;
+  applyTeam: IApply & {
+    progress: string;
+    status: string;
   };
   applicants: {
     applyList: {
@@ -20,7 +22,12 @@ export type ApplyTeamState = {
 
 const initialState: ApplyTeamState = {
   applyTeam: {
-    applyStatus: 'INIT',
+    job: '',
+    answer1: { question: -1, answer: '' },
+    answer2: { question: -1, answer: '' },
+    answer3: { question: -1, answer: '' },
+    progress: 'INIT',
+    status: 'INIT',
   },
   applicants: {
     applyList: {
@@ -42,14 +49,26 @@ const applyTeamReducer = (
   return produce(state, draft => {
     switch (action.type) {
       case 'APPLY_TEAM_REQUEST':
-        draft.applyStatus = 'FETCHING';
+        draft.status = 'FETCHING';
         return draft;
       case 'APPLY_TEAM_SUCCESS':
-        draft.applyStatus = 'SUCCESS';
+        draft.status = 'SUCCESS';
         return draft;
       case 'APPLY_TEAM_FAILURE':
-        draft.applyStatus = 'FAILTURE';
+        draft.status = 'FAILTURE';
         return draft;
+      case 'APPLY_TEAM_1':
+        draft.job = action.params.job;
+        draft.answer1 = action.params.answer1;
+        draft.progress = '2';
+        return draft;
+      case 'APPLY_TEAM_2':
+        draft.answer2 = action.params.answer2;
+        draft.answer3 = action.params.answer3;
+        draft.progress = '3';
+        return draft;
+      case 'RESET':
+        draft = initialState.applyTeam;
       default:
         return draft;
     }
