@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   ApplicantItemWrap,
   ApplicantName,

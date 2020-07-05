@@ -29,18 +29,18 @@ export const approveApplicantEntity = createEntity(
   APPROVE_APPLICANT,
   applyApi.getApproveApplicant,
 );
-export const approveApplicant = (params: number) => ({
+export const approveApplicant = (id: number) => ({
   type: APPROVE_APPLICANT,
-  params,
+  id,
 });
 
 export const refuseApplicantEntity = createEntity(
   REFUSE_APPLICANT,
   applyApi.getRefuseApplicant,
 );
-export const refuseApplicant = (params: number) => ({
+export const refuseApplicant = (id: number) => ({
   type: REFUSE_APPLICANT,
-  params,
+  id,
 });
 
 interface IApplyTeam01 {
