@@ -38,7 +38,7 @@ const initialState: ApplyTeamState = {
     status: '',
   },
   aproveApplicant: {
-    status: '',
+    status: 'INIT',
   },
 };
 
@@ -85,7 +85,6 @@ const applicantsReducer = (
         draft.status = 'FETCHING';
         return draft;
       case 'APPLICANT_LIST_SUCCESS':
-        console.log(action.payload);
         draft.applyList = {
           ...action.payload,
         };
@@ -106,13 +105,13 @@ const applyApplicantReducer = (
 ): ApplyTeamState['aproveApplicant'] => {
   return produce(state, draft => {
     switch (action.type) {
-      case 'APROVE_APPLICANT_REQUEST':
+      case 'APPROVE_APPLICANT_REQUEST':
         draft.status = 'FETCHING';
         return draft;
-      case 'APROVE_APPLICANT_SUCCESS':
+      case 'APPROVE_APPLICANT_SUCCESS':
         draft.status = 'SUCCESS';
         return draft;
-      case 'APROVE_APPLICANT_FAILURE':
+      case 'APPROVE_APPLICANT_FAILURE':
         draft.status = 'FAILTURE';
       case 'REFUSE_APPLICANT_REQUEST':
         draft.status = 'FETCHING';

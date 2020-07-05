@@ -18,6 +18,10 @@ const ApplicantCheck: React.FunctionComponent<Props> = ({ team_id }) => {
     (state: StoreState) => state.applyTeam.applicants,
   );
 
+  const { status } = useSelector(
+    (state: StoreState) => state.applyTeam.aproveApplicant,
+  );
+
   const handleApprove = (id: number) => {
     dispatch(approveApplicant(id));
   };
@@ -31,7 +35,7 @@ const ApplicantCheck: React.FunctionComponent<Props> = ({ team_id }) => {
   };
   useEffect(() => {
     getApplicantList();
-  }, []);
+  }, [status]);
 
   return (
     <ApplicantCheckWrap>

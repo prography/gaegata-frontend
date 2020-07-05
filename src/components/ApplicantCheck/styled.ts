@@ -4,6 +4,7 @@ export const ApplicantCheckWrap = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 450px;
+  overflow-y: scroll;
 `;
 
 export const ApplicantCheckTitle = styled.p`

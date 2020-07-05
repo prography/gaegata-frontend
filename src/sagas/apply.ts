@@ -12,6 +12,7 @@ import {
   RefuseApplicant,
   refuseApplicantEntity,
   REFUSE_APPLICANT,
+  ApproveApplicant,
 } from '../store/apply/action';
 
 const fetchApplyTeam = fetchEntity(applyTeamEntity);
@@ -35,15 +36,15 @@ function* watchApplicantList() {
 
 function* watchAproveApplicant() {
   while (true) {
-    const { team_id }: Applicants = yield take(APPROVE_APPLICANT);
-    yield call(fetchAproveApplicant, team_id);
+    const { id }: ApproveApplicant = yield take(APPROVE_APPLICANT);
+    yield call(fetchAproveApplicant, id);
   }
 }
 
 function* watchRefuseApplicant() {
   while (true) {
-    const { params }: RefuseApplicant = yield take(REFUSE_APPLICANT);
-    yield call(fetchRefuseApplicant, params);
+    const { id }: RefuseApplicant = yield take(REFUSE_APPLICANT);
+    yield call(fetchRefuseApplicant, id);
   }
 }
 
