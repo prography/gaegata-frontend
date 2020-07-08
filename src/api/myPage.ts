@@ -14,3 +14,35 @@ export const getMyPage = async () => {
   });
   return data;
 };
+
+export const putMyPage = async (params: FormData) => {
+  const token = getAuthToken();
+  const headers = token
+    ? {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      }
+    : {};
+
+  const { data } = await fetcher.put('/account/profile/', params, {
+    headers: headers,
+  });
+  const status = data.message;
+  return status;
+};
+
+export const getMyApplicationList = async () => {
+  const token = getAuthToken();
+  const headers = token
+    ? {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      }
+    : {};
+
+  const { data } = await fetcher.get('/account/profile/application/', {
+    headers: headers,
+  });
+
+  return data;
+};

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const DetailTeamWrap = styled.div`
-  padding: 2.5rem 1.375rem 0;
+  padding: 60px 1.375rem 0;
   flex-direction: column;
   align-items: center;
   display: flex;

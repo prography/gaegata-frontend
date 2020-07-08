@@ -15,10 +15,7 @@ interface ApplyProps {
 
 const ApplyContainer = ({ team_id, handleCancel, visible }: ApplyProps) => {
   const dispatch = useDispatch();
-  const { progress, status } = useSelector(
-    (state: StoreState) => state.applyTeam.applyTeam,
-  );
-  const { job, answer1, answer2, answer3 } = useSelector(
+  const { job, answer1, answer2, answer3, progress, status } = useSelector(
     (state: StoreState) => state.applyTeam.applyTeam,
   );
   const { list } = useSelector((state: StoreState) => state.team.questionList);

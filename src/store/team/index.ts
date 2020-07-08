@@ -28,6 +28,7 @@ export type TeamState = {
 
 const initialState: TeamState = {
   team: {
+    team_id: -1,
     id: -1,
     title: '',
     author: '',
@@ -42,6 +43,8 @@ const initialState: TeamState = {
     created_at: '',
     application: false,
     authorCheck: false,
+    job: '',
+    join_status: '',
     leader: {
       id: -1,
       image: '',
