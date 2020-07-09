@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
-import { Link, RouteComponentProps } from 'react-router-dom';
+import { Link, RouteComponentProps, Route } from 'react-router-dom';
 import { Menu, Row, Col, PageHeader } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import Profile from 'components/Profile';
@@ -46,10 +46,8 @@ const MyPage: React.FC<RouteComponentProps> = ({ match }) => {
     setVisible(true);
   };
 
-  const [, , menuType] = match.path.split('/');
-
   return (
-    <div className="mypage-wrap">
+    <div>
       <MyPageWrapper>
         <div
           style={{
@@ -72,7 +70,7 @@ const MyPage: React.FC<RouteComponentProps> = ({ match }) => {
               ) : (
                 ''
               )}
-              <MenuTitle>나의 개같하</MenuTitle>
+              <MenuTitle>나의 FITPLE</MenuTitle>
               <Menu
                 mode="inline"
                 defaultOpenKeys={['application', 'own']}
@@ -111,22 +109,23 @@ const MyPage: React.FC<RouteComponentProps> = ({ match }) => {
                   title="팀 리스트"
                   subTitle="너 내 동료가 돼라"
                 />
-                <UserTeamListContainer teamType="123" />
-                {/* <Route
-                    exact
-                    path="/mypage"
-                    render={() => (
-                    )}
-                  /> */}
-                {/* <Route
-                    path="/mypage/application/:sortby"
-                    render={() => (
-                    )}
-                  /> */}
-                {/* <Route
-                    path="/mypage/own"
-                    render={() => <UserTeamListContainer teamType="own" />}
-                  /> */}
+                <Route
+                  exact
+                  path="/mypage"
+                  render={() => (
+                    <UserTeamListContainer teamType="application" />
+                  )}
+                />
+                <Route
+                  path="/mypage/application/:sortby"
+                  render={() => (
+                    <UserTeamListContainer teamType="application" />
+                  )}
+                />
+                <Route
+                  path="/mypage/own"
+                  render={() => <UserTeamListContainer teamType="own" />}
+                />
               </RightContent>
             </Col>
           </Row>

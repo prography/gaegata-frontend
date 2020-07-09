@@ -62,6 +62,16 @@ const getMyApplicationListReducer = (
       case 'GET_MY_APPLICATION_LIST_FAILTURE':
         draft.status = 'FAILTURE';
         return draft;
+      case 'GET_MY_TEAM_LIST_REQUEST':
+        draft.status = 'FETCHING';
+        return draft;
+      case 'GET_MY_TEAM_LIST_SUCCESS':
+        draft.list = action.payload.myTeam;
+        draft.status = 'SUCCESS';
+        return draft;
+      case 'GET_MY_TEAM_LIST_FAILTURE':
+        draft.status = 'FAILTURE';
+        return draft;
       default:
         return draft;
     }

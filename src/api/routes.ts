@@ -24,4 +24,19 @@ export const routes = [
     page: MyPage,
     exact: true,
   },
+  {
+    path: '/mypage/:menu(application|made)',
+    page: MyPage,
+    exact: true,
+  },
+  {
+    path: '/mypage/application/:sortby',
+    page: MyPage,
+    exact: true,
+  },
+  {
+    path: '/mypage/own',
+    page: MyPage,
+    exact: true,
+  },
 ];

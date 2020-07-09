@@ -46,3 +46,18 @@ export const getMyApplicationList = async () => {
 
   return data;
 };
+
+export const getMyteamList = async () => {
+  const token = getAuthToken();
+  const headers = token
+    ? {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      }
+    : {};
+  const { data } = await fetcher.get('account/profile/', {
+    headers,
+  });
+
+  return data;
+};

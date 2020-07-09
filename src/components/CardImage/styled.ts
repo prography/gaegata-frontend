@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const CardImageWrap = styled.span`
-  position: relative;
   padding-top: 75%;
   overflow: hidden;
 `;
