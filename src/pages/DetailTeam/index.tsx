@@ -34,7 +34,9 @@ const DetailTeam: React.FC<RouteComponentProps<MatchParams>> = ({ match }) => {
   const dispatch = useDispatch();
 
   const team = useSelector((state: StoreState) => state.team.team);
-  const { username } = useSelector((state: StoreState) => state.auth.me);
+  const { username, isLoggedIn } = useSelector(
+    (state: StoreState) => state.auth.me,
+  );
 
   const {
     title,
@@ -73,14 +75,18 @@ const DetailTeam: React.FC<RouteComponentProps<MatchParams>> = ({ match }) => {
             모집 인원(기획자 : {planner}명, 개발자 : {developer}명, 디자이너 :{' '}
             {designer}명)
           </SubTitle>
-          {username !== author ? (
-            application ? (
-              <CreateButton>신청취소</CreateButton>
+          {isLoggedIn ? (
+            username !== author ? (
+              application ? (
+                <CreateButton>신청취소</CreateButton>
+              ) : (
+                <CreateButton onClick={handleVisible}>지원하기</CreateButton>
+              )
             ) : (
-              <CreateButton onClick={handleVisible}>지원하기</CreateButton>
+              <CreateButton onClick={handleVisible}>신청자보기</CreateButton>
             )
           ) : (
-            <CreateButton onClick={handleVisible}>신청자보기</CreateButton>
+            <></>
           )}
           <Hr />
           <ImageWrap>
