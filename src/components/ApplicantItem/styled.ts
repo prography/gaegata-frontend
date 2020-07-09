@@ -54,3 +54,25 @@ export const ApplyButton = styled.button`
 export const ApplicantContent = styled.div<Props>`
   display: ${({ show }: Props) => (show ? 'show' : 'none')};
 `;
+
+export const QnAWrap = styled.div`
+  border: 1px solid #fff;
+  border-radius: 10px;
+  margin: 10px 4%;
+  box-shadow: 4px 4px 4px 4px rgba(40, 50, 60, 0.06);
+`;
+
+export const Question = styled.div`
+  border-bottom: 1px solid #bdbdbd;
+  text-align: left;
+  min-height: 30px;
+  margin: 10px;
+  font-size: 1.25rem;
+`;
+
+export const Answer = styled.div`
+  text-align: left;
+  min-height: 30px;
+  margin: 10px;
+  font-size: 1rem;
+`;

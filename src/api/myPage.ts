@@ -55,7 +55,7 @@ export const getMyteamList = async () => {
         'Content-Type': 'application/json',
       }
     : {};
-  const { data } = await fetcher.get('account/profile/', {
+  const { data } = await fetcher.get('account/profile/team/', {
     headers,
   });
 

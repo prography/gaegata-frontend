@@ -1,6 +1,7 @@
 import { produce } from 'immer';
 import { combineReducers } from 'redux';
 import { IApply } from 'models/apply';
+import { IQuestion } from 'models/question';
 
 export type ApplyTeamState = {
   applyTeam: IApply & {
@@ -9,6 +10,7 @@ export type ApplyTeamState = {
   };
   applicants: {
     applyList: {
+      team_questions: IQuestion[];
       team: number;
       applications: [];
       message: string;
@@ -31,6 +33,7 @@ const initialState: ApplyTeamState = {
   },
   applicants: {
     applyList: {
+      team_questions: [],
       team: 0,
       applications: [],
       message: '',

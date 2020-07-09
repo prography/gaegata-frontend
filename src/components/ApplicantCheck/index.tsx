@@ -47,6 +47,7 @@ const ApplicantCheck: React.FunctionComponent<Props> = ({ team_id }) => {
                 {...applyData}
                 handleApprove={handleApprove}
                 handleRefuse={handleRefuse}
+                questions={applyList.team_questions}
               ></ApplicantItem>
             ))
           : '신청자가 아직 없습니다.'}
