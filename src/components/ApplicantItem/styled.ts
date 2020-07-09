@@ -17,6 +17,7 @@ export const ApplicantItemWrap = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  border-radius: 10px;
 `;
 
 export const ApplicantName = styled.span`
