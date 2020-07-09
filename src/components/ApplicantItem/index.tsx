@@ -6,8 +6,12 @@ import {
   ApplyButton,
   ApplicantItemContainer,
   ApplicantContent,
+  Answer,
+  QnAWrap,
+  Question,
 } from './styled';
-import { Applicants } from 'models/apply';
+import { Applicants, IAnswer } from 'models/apply';
+import { IQuestion } from 'models/question';
 
 const ApplicantItem = ({
   id,
@@ -17,9 +21,13 @@ const ApplicantItem = ({
   created_at,
   handleApprove,
   handleRefuse,
+  questions,
+  answers,
 }: Applicants & {
   handleApprove: (id: number) => {};
   handleRefuse: (id: number) => {};
+  questions: IQuestion[];
+  answers: IAnswer[];
 }) => {
   const { username, image } = applicant;
   const [show, setShow] = useState(false);
@@ -78,8 +86,21 @@ const ApplicantItem = ({
         </div>
       </ApplicantItemWrap>
       <ApplicantContent show={show}>
-        직무 : {jobName.get(job)} <br />
-        신청일 : {created_at}
+        <div>신청일 : {created_at}</div>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <QnAWrap>
+            <Question>{questions[0].question}</Question>
+            <Answer>{answers[0].answer}</Answer>
+          </QnAWrap>
+          <QnAWrap>
+            <Question>{questions[1].question}</Question>
+            <Answer>{answers[1].answer}</Answer>
+          </QnAWrap>
+          <QnAWrap>
+            <Question>{questions[2].question}</Question>
+            <Answer>{answers[2].answer}</Answer>
+          </QnAWrap>
+        </div>
       </ApplicantContent>
     </ApplicantItemContainer>
   );
