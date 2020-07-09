@@ -24,6 +24,7 @@ const PageLayout: React.FC = ({ children }) => {
           borderRadius: '5px',
           flexDirection: 'column',
           marginBottom: '30px',
+          backgroundImage: 'url(/images/team1.jpg)',
         }}
       >
         <div style={{ color: 'white', display: 'flex', fontSize: '1.5rem' }}>

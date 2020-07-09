@@ -2,6 +2,7 @@ import { User } from './user';
 
 export interface Team {
   id: number;
+  team_id: number;
   title: string;
   author: string;
   description: string;
@@ -11,6 +12,8 @@ export interface Team {
   region?: string;
   status?: string;
   goal?: string;
-  image?: string;
+  image: string;
   created_at: string;
+  job: string;
+  join_status: string;
 }

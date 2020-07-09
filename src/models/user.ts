@@ -5,4 +5,5 @@ export type User = {
   phone?: string;
   username: string;
   image?: string;
+  introduce?: string;
 };
