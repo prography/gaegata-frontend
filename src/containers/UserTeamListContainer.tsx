@@ -24,7 +24,7 @@ const UserTeamListContainer = ({ teamType }: Props) => {
   }, []);
 
   return (
-    <>
+    <div style={{ boxShadow: '4px 4px 4px 4px rgba(40,50,60,0.06)' }}>
       {status == 'SUCCESS' ? (
         list.map(data => (
           <TeamRow {...data} key={data.id} teamType={teamType} />
@@ -32,7 +32,7 @@ const UserTeamListContainer = ({ teamType }: Props) => {
       ) : (
         <Skeleton active />
       )}
-    </>
+    </div>
   );
 };
 

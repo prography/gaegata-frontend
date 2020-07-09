@@ -37,7 +37,7 @@ export const P = styled.p`
 `;
 
 export const Button = styled.button`
-  width: 14%;
+  width: 60px;
   height: 30px;
   border-radius: 15px;
   border: 0px solid;

@@ -37,3 +37,22 @@ body {
 .ant-avatar {
   vertical-align: 0px;
 }
+
+.ant-upload.ant-upload-select-picture-card {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.ant-upload-picture-card-wrapper {
+  height: 100%;
+}
+
+.ant-upload.ant-upload-select-picture-card > .ant-upload {
+  display: block;
+  padding: 0;
+}
+
+img {
+  height: 100%;
+}

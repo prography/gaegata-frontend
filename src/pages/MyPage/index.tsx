@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
-import { Link, RouteComponentProps, Route } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import { Menu, Row, Col, PageHeader } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
 import Profile from 'components/Profile';
 import EditProfile from 'components/EditProfile';
 import ModalComponent from 'components/Modal/index';
@@ -24,17 +23,8 @@ const MenuTitle = styled.div`
   padding: 50px 20px 15px;
 `;
 
-const MyPage: React.FC<RouteComponentProps> = ({ match }) => {
-  const dispatch = useDispatch();
+const MyPage = () => {
   const [visible, setVisible] = useState(false);
-
-  const getData = useCallback(() => {
-    //dispatch(myPage());
-  }, [dispatch]);
-
-  useEffect(() => {
-    getData();
-  }, []);
 
   const handleCancel = useCallback(async () => {
     setVisible(false);
@@ -65,7 +55,7 @@ const MyPage: React.FC<RouteComponentProps> = ({ match }) => {
                   visible={visible}
                   width={600}
                 >
-                  <EditProfile />
+                  <EditProfile handleCancel={handleCancel} />
                 </ModalComponent>
               ) : (
                 ''

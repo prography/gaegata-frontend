@@ -31,7 +31,11 @@ function beforeUpload(file: any) {
   return isJpgOrPng && isLt2M;
 }
 
-const Profile = () => {
+interface Props {
+  handleCancel: () => {};
+}
+
+const Profile = ({ handleCancel }: Props) => {
   const { username, email, image, phone, livingArea, introduce } = useSelector(
     (state: StoreState) => state.auth.me,
   );
@@ -41,6 +45,7 @@ const Profile = () => {
   const [editPhone, setEditPhone] = useState(phone);
   const [editLivingArea, setEditLivingArea] = useState(livingArea);
   const [editIntroduce, setEditIntroduce] = useState(introduce);
+  const [imageChangeCheck, setImageChangeCheck] = useState(false);
 
   const [loading, setLoading] = useState(false);
 
@@ -62,19 +67,27 @@ const Profile = () => {
       setLoading(true);
       return;
     }
-    // if (info.file.status === 'done') {
-    //   getBase64(info.file.originFileObj, imageUrl =>
-    //     setLoading( false )
-
-    //   );
+    if (info.file.status === 'done') {
+      getBase64(info.file.originFileObj, (image: any) => {
+        setEditImage(info.file.originFileObj);
+        setLoading(false);
+        setImageChangeCheck(true);
+      });
+    }
   };
+
+  const uploadButton = (
+    <div>
+      <div className="ant-upload-text">Upload</div>
+    </div>
+  );
 
   const handleSubmit = async () => {
     try {
       const formdata = new FormData();
       if (email) formdata.append('email', email);
       if (editUserName) formdata.append('username', editUserName);
-      // if (editImage) formdata.append('image', editImage);
+      if (imageChangeCheck && editImage) formdata.append('image', editImage);
       if (editPhone) formdata.append('phone', editPhone);
       if (editLivingArea) formdata.append('livingArea', editLivingArea);
       if (editIntroduce) formdata.append('introduce', editIntroduce);
@@ -83,6 +96,7 @@ const Profile = () => {
 
       if (status == 'ok.') {
         message.success('프로필 수정에 성공했습니다.');
+        handleCancel();
       }
     } catch (err) {
       message.error('프로필 수정에 실패했습니다.');
@@ -94,7 +108,22 @@ const Profile = () => {
       <h1>프로필 수정</h1>
       <ProfileImageBox>
         <ProfileImage>
-          <Image src={image} />
+          <Upload
+            name="avatar"
+            listType="picture-card"
+            className="avatar-uploader"
+            showUploadList={false}
+            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+            beforeUpload={beforeUpload}
+            onChange={handleChange}
+            accept="image/*"
+          >
+            {editImage ? (
+              <Image src={editImage} alt="avatar" style={{ width: '100%' }} />
+            ) : (
+              uploadButton
+            )}
+          </Upload>
         </ProfileImage>
       </ProfileImageBox>
 
