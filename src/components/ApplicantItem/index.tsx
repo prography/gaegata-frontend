@@ -50,10 +50,14 @@ const ApplicantItem = ({
             backgroundColor: '#f7f8fb',
             padding: '10px',
             width: '300px',
+            borderRadius: '10px',
           }}
         >
           <ApplicantImage>
-            <img src={image} style={{ borderRadius: '100%', height: '100%' }} />
+            <img
+              src={image}
+              style={{ borderRadius: '100%', height: '100%', width: '100%' }}
+            />
           </ApplicantImage>
           <div>
             <ApplicantName>{username}</ApplicantName>
@@ -82,7 +86,11 @@ const ApplicantItem = ({
           style={{ marginTop: '5%', marginRight: '2%' }}
           onClick={() => handleShow()}
         >
-          <img src="/images/arrow.png" alt="상세보기" />
+          <img
+            src="/images/arrow.png"
+            style={{ height: '16px' }}
+            alt="상세보기"
+          />
         </div>
       </ApplicantItemWrap>
       <ApplicantContent show={show}>
