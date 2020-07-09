@@ -129,7 +129,7 @@ const ApplyTeam02: React.FunctionComponent<Props> = ({
       <ItemWrap>
         {
           <div style={{ textAlign: 'left' }}>
-            <span style={{ color: 'red' }}>*</span>필수 질문)
+            <span style={{ color: 'red' }}>* </span>필수 질문)
             {question2.question}
           </div>
         }
@@ -145,7 +145,7 @@ const ApplyTeam02: React.FunctionComponent<Props> = ({
       <ItemWrap>
         {
           <div style={{ textAlign: 'left' }}>
-            <span style={{ color: 'red' }}>*</span>필수 질문)
+            <span style={{ color: 'red' }}>* </span>필수 질문)
             {question3.question}
           </div>
         }

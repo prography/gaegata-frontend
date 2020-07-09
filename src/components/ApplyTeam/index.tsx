@@ -154,7 +154,7 @@ const ApplyTeam: React.FunctionComponent<Props> = ({ question }) => {
       <ItemWrap>
         {
           <div style={{ textAlign: 'left' }}>
-            <span style={{ color: 'red' }}>*</span>필수 질문)
+            <span style={{ color: 'red' }}>* </span>필수 질문)
             {question.question}
           </div>
         }

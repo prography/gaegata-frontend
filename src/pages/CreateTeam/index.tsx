@@ -230,7 +230,9 @@ const CreateTeam: React.FC = () => {
         <Container>
           <Form onSubmit={handleSubmit}>
             <ItemWrap>
-              <Title>팀 기본 정보</Title>
+              <Title>
+                <span style={{ color: 'red' }}>* </span>팀 기본 정보
+              </Title>
               <Input
                 id="title"
                 type="text"
@@ -257,7 +259,9 @@ const CreateTeam: React.FC = () => {
               </SelectArea>
             </ItemWrap>
             <ItemWrap style={{ paddingTop: '8%' }}>
-              <Title>팀 모집 인원</Title>
+              <Title>
+                <span style={{ color: 'red' }}>* </span>팀 모집 인원
+              </Title>
               <FieldWrap>
                 <NumberInputWrap>
                   <NumberInput
@@ -305,15 +309,17 @@ const CreateTeam: React.FC = () => {
             </ItemWrap>
             <ItemWrap style={{ paddingTop: '8%' }}>
               <Title>썸네일 이미지 선택</Title>
-              <Upload
-                action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                listType="picture-card"
-                onPreview={handlePreview}
-                onChange={handleImage}
-                accept="image/*"
-              >
-                {image === '' ? uploadButton : null}
-              </Upload>
+              <div style={{ width: '104px', height: '104px' }}>
+                <Upload
+                  action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                  listType="picture-card"
+                  onPreview={handlePreview}
+                  onChange={handleImage}
+                  accept="image/*"
+                >
+                  {image === '' ? uploadButton : null}
+                </Upload>
+              </div>
               <Modal
                 visible={previewVisible}
                 footer={null}
@@ -327,7 +333,9 @@ const CreateTeam: React.FC = () => {
               </Modal>
             </ItemWrap>
             <ItemWrap style={{ paddingTop: '8%' }}>
-              <Title>질문</Title>
+              <Title>
+                <span style={{ color: 'red' }}>* </span>질문
+              </Title>
               <SubTitle>첫번째 질문</SubTitle>
               <TextArea
                 id="question1"
