@@ -80,7 +80,7 @@ const ApplicantItem = ({
             <ApplyButton onClick={() => handleRefuse(id)}>거절하기</ApplyButton>
           </>
         ) : (
-          <ApplyButton onClick={() => handleRefuse(id)}>취소하기</ApplyButton>
+          <ApplyButton>확정</ApplyButton>
         )}
         <div
           style={{ marginTop: '5%', marginRight: '2%' }}
