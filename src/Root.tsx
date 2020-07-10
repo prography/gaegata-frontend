@@ -7,7 +7,9 @@ import styled from 'styled-components';
 import { me } from 'store/auth/action';
 import { getAuthToken } from 'utils/auth';
 
-const PageWrap = styled.div``;
+const PageWrap = styled.div`
+  height: 100%;
+`;
 
 const Root: React.FC = () => {
   const dispatch = useDispatch();
