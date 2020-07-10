@@ -2,6 +2,7 @@ import Home from 'pages/Home';
 import CreateTeam from 'pages/CreateTeam/index';
 import DetailTeam from 'pages/DetailTeam/index';
 import MyPage from 'pages/MyPage/index';
+import Feedback from 'pages/Feedback';
 
 export const routes = [
   {
@@ -37,6 +38,11 @@ export const routes = [
   {
     path: '/mypage/own',
     page: MyPage,
+    exact: true,
+  },
+  {
+    path: '/feedback',
+    page: Feedback,
     exact: true,
   },
 ];

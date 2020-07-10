@@ -52,6 +52,14 @@ const Header = () => {
               FITPLE
             </Link>
           </NavLogo>
+          <NavLogo>
+            <Link
+              to="/feedback"
+              style={{ fontSize: '1.25rem', color: '#5b5c5f' }}
+            >
+              feedback
+            </Link>
+          </NavLogo>
           <NavUser>
             {isLoggedIn ? (
               <NavUl>
