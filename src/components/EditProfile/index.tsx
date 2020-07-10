@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAuthToken } from 'utils/auth';
 import {
   ProfileWrap,
   ProfileImageBox,
@@ -12,6 +13,7 @@ import {
 } from './styled';
 import { Upload, message } from 'antd';
 import * as myPageApi from 'api/myPage';
+import { me } from 'store/auth/action';
 
 function getBase64(img: any, callback: any) {
   const reader = new FileReader();
@@ -46,8 +48,11 @@ const Profile = ({ handleCancel }: Props) => {
   const [editLivingArea, setEditLivingArea] = useState(livingArea);
   const [editIntroduce, setEditIntroduce] = useState(introduce);
   const [imageChangeCheck, setImageChangeCheck] = useState(false);
+  const [changeImage, setChangeImage] = useState(image);
 
   const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
 
   const handleUserName = (e: ChangeEvent<HTMLInputElement>) => {
     setEditUserName(e.target.value);
@@ -71,6 +76,7 @@ const Profile = ({ handleCancel }: Props) => {
       getBase64(info.file.originFileObj, (image: any) => {
         setEditImage(info.file.originFileObj);
         setLoading(false);
+        setChangeImage(image);
         setImageChangeCheck(true);
       });
     }
@@ -97,6 +103,11 @@ const Profile = ({ handleCancel }: Props) => {
       if (status == 'ok.') {
         message.success('프로필 수정에 성공했습니다.');
         handleCancel();
+        const token = getAuthToken();
+
+        if (token) {
+          dispatch(me(token));
+        }
       }
     } catch (err) {
       message.error('프로필 수정에 실패했습니다.');
@@ -118,8 +129,8 @@ const Profile = ({ handleCancel }: Props) => {
             onChange={handleChange}
             accept="image/*"
           >
-            {editImage ? (
-              <Image src={editImage} alt="avatar" style={{ width: '100%' }} />
+            {changeImage ? (
+              <Image src={changeImage} alt="avatar" style={{ width: '100%' }} />
             ) : (
               uploadButton
             )}
