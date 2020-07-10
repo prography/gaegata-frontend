@@ -79,8 +79,10 @@ const ApplicantItem = ({
             </ApplyButton>
             <ApplyButton onClick={() => handleRefuse(id)}>거절하기</ApplyButton>
           </>
+        ) : join_status == 'Rejected' ? (
+          <ApplyButton>거절</ApplyButton>
         ) : (
-          <ApplyButton>확정</ApplyButton>
+          <ApplyButton>승인</ApplyButton>
         )}
         <div
           style={{ marginTop: '5%', marginRight: '2%' }}
