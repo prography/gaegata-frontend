@@ -22,6 +22,7 @@ import ModalComponent from 'components/Modal/index';
 import ApplicantCheck from 'components/ApplicantCheck';
 import CommentContainer from 'containers/CommentContainer';
 import ApplyContainer from 'containers/ApplyContainer';
+import UserProfile from 'components/UserProfile';
 
 interface MatchParams {
   team_id: string;
@@ -29,6 +30,8 @@ interface MatchParams {
 
 const DetailTeam: React.FC<RouteComponentProps<MatchParams>> = ({ match }) => {
   const [visible, setVisible] = useState(false);
+  const [profileVisible, setProfileVisible] = useState(false);
+  const [userId, setUserId] = useState(-1);
   const team_id = parseInt(match.params.team_id);
 
   const dispatch = useDispatch();
@@ -47,6 +50,8 @@ const DetailTeam: React.FC<RouteComponentProps<MatchParams>> = ({ match }) => {
     planner,
     author,
     application,
+    leader,
+    member,
   } = team;
   const getData = useCallback(() => {
     dispatch(detailTeam(team_id));
@@ -59,8 +64,15 @@ const DetailTeam: React.FC<RouteComponentProps<MatchParams>> = ({ match }) => {
   const handleVisible = (): void => {
     setVisible(true);
   };
+
+  const handleProfileVisible = (id: number) => {
+    setProfileVisible(true);
+    setUserId(id);
+  };
+
   const handleCancel = useCallback(async () => {
     setVisible(false);
+    setProfileVisible(false);
     dispatch(reset());
 
     return visible;
@@ -106,10 +118,42 @@ const DetailTeam: React.FC<RouteComponentProps<MatchParams>> = ({ match }) => {
           <TeamPeopleWrap>
             <TeamPeopleTitle>현재 팀원</TeamPeopleTitle>
             <TeamPeopleContent>
-              <TeamPeople>
-                <TeamPeopleImage></TeamPeopleImage>
-                팀장
+              <TeamPeople
+                onClick={() => handleProfileVisible(leader.id)}
+                style={{ cursor: 'pointer' }}
+              >
+                <TeamPeopleImage>
+                  <img
+                    src={leader.image}
+                    style={{
+                      borderRadius: '100%',
+                      height: '100%',
+                      width: '100%',
+                    }}
+                  />
+                </TeamPeopleImage>
+                <div style={{ textAlign: 'center' }}>팀장</div>
               </TeamPeople>
+              {member.map(({ id, image }) => {
+                return (
+                  <TeamPeople
+                    onClick={() => handleProfileVisible(id)}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <TeamPeopleImage>
+                      <img
+                        src={image}
+                        style={{
+                          borderRadius: '100%',
+                          height: '100%',
+                          width: '100%',
+                        }}
+                      />
+                    </TeamPeopleImage>
+                    <div style={{ textAlign: 'center' }}>팀원</div>
+                  </TeamPeople>
+                );
+              })}
             </TeamPeopleContent>
           </TeamPeopleWrap>
           <Hr />
@@ -131,6 +175,18 @@ const DetailTeam: React.FC<RouteComponentProps<MatchParams>> = ({ match }) => {
         >
           <ApplicantCheck team_id={team_id} />
         </ModalComponent>
+      )}
+
+      {profileVisible ? (
+        <ModalComponent
+          handleCancel={handleCancel}
+          visible={profileVisible}
+          width={600}
+        >
+          <UserProfile user_id={userId} />
+        </ModalComponent>
+      ) : (
+        ''
       )}
     </>
   );

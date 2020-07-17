@@ -35,6 +35,8 @@ const userProfileReducer = (
       case 'USER_PROFILE_FUCK_FAILTURE':
         draft = initialState.userProfile;
         return draft;
+      case 'RESET':
+        draft = initialState.userProfile;
       default:
         return draft;
     }

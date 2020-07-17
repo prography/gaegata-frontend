@@ -60,6 +60,7 @@ export const TeamPeopleTitle = styled.p`
 `;
 
 export const TeamPeopleContent = styled.div`
+  display: flex;
   margin-left: 15px;
 `;
 
@@ -70,4 +71,6 @@ export const TeamPeopleImage = styled.div`
   border-radius: 100%;
 `;
 
-export const TeamPeople = styled.div``;
+export const TeamPeople = styled.div`
+  margin: 0 15px;
+`;

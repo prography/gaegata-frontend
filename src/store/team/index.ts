@@ -10,6 +10,7 @@ export type TeamState = {
     application: boolean;
     leader: User;
     authorCheck: boolean;
+    member: User[];
   };
   teamList: {
     list: {
@@ -50,6 +51,7 @@ const initialState: TeamState = {
       image: '',
       username: '',
     },
+    member: [],
   },
   teamList: {
     list: {
@@ -90,6 +92,8 @@ const teamReducer = (
           ...action.payload.board,
         };
         draft.application = action.payload.application;
+        draft.leader = action.payload.leader;
+        draft.member = action.payload.member;
         draft.status = 'DETAIL_SUCCESS';
         return draft;
       case 'DETAIL_TEAM_FAILURE':
