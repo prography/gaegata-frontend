@@ -4,6 +4,7 @@ import TeamReducer, { TeamState } from './team';
 import ApplyReducer, { ApplyTeamState } from './apply';
 import MyPageReudecer, { MyPageState } from './mypage';
 import CommentReudecer, { CommentState } from './comment';
+import UserProfileReducer, { UserProfileState } from './profile';
 
 export type RootState = {
   auth: AuthState;
@@ -11,6 +12,7 @@ export type RootState = {
   applyTeam: ApplyTeamState;
   myPage: MyPageState;
   comment: CommentState;
+  userProfile: UserProfileState;
 };
 
 export default combineReducers({
@@ -19,4 +21,5 @@ export default combineReducers({
   applyTeam: ApplyReducer,
   myPage: MyPageReudecer,
   comment: CommentReudecer,
+  userProfile: UserProfileReducer,
 });
