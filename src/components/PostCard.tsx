@@ -104,6 +104,7 @@ interface PostCardProps {
   region: string;
   title: string;
   description: string;
+  handleVisible: (id: number) => {};
 }
 const PostCard: React.FC<PostCardProps> = ({
   id,
@@ -112,6 +113,7 @@ const PostCard: React.FC<PostCardProps> = ({
   region,
   title,
   description,
+  handleVisible,
 }) => {
   return (
     <Card>
@@ -123,25 +125,30 @@ const PostCard: React.FC<PostCardProps> = ({
         </Link>
       )}
       <ContentWrap>
-        <Link to={`/team/detail/${id}`}>
-          <div>
-            <Avatar size="large" src={author.image}></Avatar>
-            <div style={{ display: 'inline-block', marginLeft: '15px' }}>
-              <h4 style={{ margin: '0px' }}>{title}</h4>
-              <span style={{ fontWeight: 600 }}>{author.username}</span>
-              <span
-                style={{
-                  marginLeft: '10px',
-                  color: '#BDBDBD',
-                  fontWeight: 600,
-                }}
-              >
-                {region}
-              </span>
-            </div>
+        <div>
+          <Avatar size="large" src={author.image}></Avatar>
+          <div
+            style={{
+              display: 'inline-block',
+              marginLeft: '15px',
+              cursor: 'pointer',
+            }}
+            onClick={() => handleVisible(author.id)}
+          >
+            <h4 style={{ margin: '0px' }}>{title}</h4>
+            <span style={{ fontWeight: 600 }}>{author.username}</span>
+            <span
+              style={{
+                marginLeft: '10px',
+                color: '#BDBDBD',
+                fontWeight: 600,
+              }}
+            >
+              {region}
+            </span>
           </div>
-          <p style={{ color: '#BDBDBD', fontWeight: 600 }}>{description}</p>
-        </Link>
+        </div>
+        <p style={{ color: '#BDBDBD', fontWeight: 600 }}>{description}</p>
       </ContentWrap>
       <ContentFooter>개발자, 디자이너, 기획자</ContentFooter>
     </Card>
