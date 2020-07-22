@@ -218,7 +218,7 @@ const CreateTeam: React.FC = () => {
           alignItems: 'center',
           display: 'flex',
           justifyContent: 'center',
-          backgroundImage: 'url(/images/team1.jpg)',
+          backgroundImage: 'url(/images/image.png)',
         }}
       >
         <div style={{ width: '50%', color: 'white', marginBottom: '10px' }}>
