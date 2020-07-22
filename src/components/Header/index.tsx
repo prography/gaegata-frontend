@@ -49,19 +49,17 @@ const Header = () => {
         <HeaderContainer>
           <NavLogo>
             <Link to="/" style={{ color: '#5b5c5f' }}>
-              <div style={{ width: '8%' }}>
-                <img src="/images/fitple_logo_0.png" width="100%" />
-              </div>
+              <img src="/images/fitple_logo_0.svg" width="60%" />
             </Link>
           </NavLogo>
-          {/* <NavLogo>
-            <Link
+          <NavLogo>
+            {/* <Link
               to="/feedback"
               style={{ fontSize: '1.25rem', color: '#5b5c5f' }}
             >
               feedback
-            </Link>
-          </NavLogo> */}
+            </Link> */}
+          </NavLogo>
           <NavUser>
             {isLoggedIn ? (
               <NavUl>
