@@ -88,6 +88,8 @@ const Login: React.FunctionComponent = () => {
               error={passwordError}
               autoFocus={true}
               onKeyPress={enterPasswordCheck}
+              autoComplete="new-password"
+              value={password}
             />
             <div style={{ color: 'red', fontSize: '12px' }}>
               {passwordError}
@@ -120,6 +122,7 @@ const Login: React.FunctionComponent = () => {
               error={emailError}
               onKeyPress={enterEmailCheck}
               autoFocus={true}
+              autoComplete="nope"
             />
             <div style={{ color: 'red', fontSize: '12px' }}>{emailError}</div>
           </ItemWrap>

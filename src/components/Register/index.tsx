@@ -92,10 +92,12 @@ const Register = () => {
       <ItemWrap>
         <LoginInput
           type="text"
-          name="nickname"
-          id="nickname"
+          name="username"
+          id="username"
+          autoComplete="new-password"
           placeholder="이름을 입력해주세요."
           onChange={onChangeNickname}
+          value={username}
           error={usernameError}
         />
         <div style={{ color: 'red', fontSize: '12px' }}>{usernameError}</div>
@@ -105,9 +107,11 @@ const Register = () => {
           type="password"
           name="password"
           id="password"
+          autoComplete="new-password"
           placeholder="비밀번호를 입력해주세요."
           onChange={onChangePassword}
           error={passwordError}
+          value={password}
         />
         <div style={{ color: 'red', fontSize: '12px' }}>{passwordError}</div>
       </ItemWrap>
@@ -116,9 +120,11 @@ const Register = () => {
           type="password"
           name="passwordCheck"
           id="passwordCheck"
+          autoComplete="new-password"
           placeholder="비밀번호를 다시 입력해주세요."
           onChange={onChangePasswordRepeat}
           error={passwordRepeatError}
+          value={password}
         />
         <div style={{ color: 'red', fontSize: '12px' }}>
           {passwordRepeatError}
