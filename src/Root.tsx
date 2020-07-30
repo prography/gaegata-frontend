@@ -6,10 +6,9 @@ import Header from 'components/Header/index';
 import styled from 'styled-components';
 import { me } from 'store/auth/action';
 import { getAuthToken } from 'utils/auth';
+import Footer from 'components/Footer';
 
-const PageWrap = styled.div`
-  height: 100%;
-`;
+const PageWrap = styled.div``;
 
 const Root: React.FC = () => {
   const dispatch = useDispatch();
@@ -33,6 +32,7 @@ const Root: React.FC = () => {
             ))}
           </PageWrap>
         </Switch>
+        <Footer />
       </Suspense>
     </Router>
   );

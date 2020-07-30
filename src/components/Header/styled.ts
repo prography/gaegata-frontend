@@ -41,6 +41,6 @@ export const NavUl = styled.ul`
 export const NavLi = styled.li`
   cursor: pointer;
   padding: 10px;
-  fontweight: 800;
+  font-weight: 800;
   margintop: 15px;
 `;
