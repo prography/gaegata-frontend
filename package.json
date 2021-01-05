@@ -18,7 +18,7 @@
     "@types/styled-components": "^5.0.1",
     "@types/sweetalert": "^2.0.4",
     "antd": "^4.0.3",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.10.0",
     "immer": "^6.0.2",
